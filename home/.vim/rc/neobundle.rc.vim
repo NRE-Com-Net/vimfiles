@@ -179,4 +179,4 @@ NeoBundle 'vim-scripts/SQLComplete.vim'
 NeoBundle 'violetyk/cake.vim', {
 			\ 'vim_version' : '7.3.885',
 			\ }
-
+NeoBundle 'bigbrozer/vim-nagios'
