@@ -133,27 +133,16 @@ NeoBundle 'xolox/vim-easytags', {
 			\ }
 NeoBundle 'pbrisbin/vim-mkdir'
 NeoBundle 'jmcantrell/vim-diffchanges'
-NeoBundleLazy 'NemesisRE/auto-neobundle'
+NeoBundleLazy 'rhysd/auto-neobundle'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'zhaocai/DirDiff.vim'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'ap/vim-css-color'
-NeoBundle 'bogado/file-line'
+NeoBundle 'inkarkat/file-line'
 NeoBundle 'vim-scripts/bufkill.vim'
 
 " Syntax
-NeoBundle 'Shougo/javacomplete', {
-				\ 'external_commands' : 'javac',
-				\ 'build': {
-				\       'cygwin': 'javac autoload/Reflection.java',
-				\       'mac': 'javac autoload/Reflection.java',
-				\       'unix': 'javac autoload/Reflection.java',
-				\   },
-				\ 'autoload' : {
-				\   'filetypes' : 'java',
-				\ }
-				\}
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'rodjek/vim-puppet'
