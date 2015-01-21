@@ -215,12 +215,12 @@ function! CopyModeToggle()
 		setlocal nolist
 		setlocal nonumber
 		setlocal foldcolumn=0
-		GitGutterSignsDisable
+		call sy#stop(b:sy.buffer)
 	else
 		setlocal foldcolumn=1
 		setlocal list
 		setlocal number
-		GitGutterSignsEnable
+		call sy#start()
 	endif
 endfunction
 

@@ -108,7 +108,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'junkblocker/unite-tasklist'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'jrhorn424/vim-multiple-cursors'
 NeoBundle 'mtscout6/vim-tagbar-css'
 NeoBundle 'bronson/vim-trailing-whitespace'
@@ -141,6 +141,10 @@ NeoBundle 'mhinz/vim-startify'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'inkarkat/file-line'
 NeoBundle 'vim-scripts/bufkill.vim'
+NeoBundle 'mhinz/vim-signify'
+NeoBundle 'int3/vim-extradite', {
+			\ 'depends' : 'tpope/vim-fugitive'
+			\ }
 
 " Syntax
 NeoBundle 'tpope/vim-rails'
