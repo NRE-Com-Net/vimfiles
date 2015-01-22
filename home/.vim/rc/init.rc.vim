@@ -5,6 +5,8 @@
 " Enable 256 color terminal.
 set t_Co=256
 
+set tags=./.tags;,~/.vimtags
+
 if exists('&regexpengine')
 	" Use old regexp engine.
 	" set regexpengine=1
