@@ -168,6 +168,7 @@ endif "}}}
 
 if neobundle#tap('vinarise.vim') && neobundle#is_sourced('vinarise.vim') "{{{
 	let g:vinarise_enable_auto_detect = 1
+	call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('promptline.vim') && neobundle#is_sourced('promptline.vim') "{{{
@@ -178,8 +179,16 @@ if neobundle#tap('promptline.vim') && neobundle#is_sourced('promptline.vim') "{{
 		\'c' : [ promptline#slices#python_virtualenv() ],
 		\'y' : [ promptline#slices#cwd() ],
 		\'warn' : [ promptline#slices#last_exit_code() ]}
+	call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('vim-startify') && neobundle#is_sourced('vim-startify') "{{{
 	let neobundle#hooks.on_source = '~/.vim/rc/plugins/vim-startify.vim'
+	call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-signify') && neobundle#is_sourced('vim-signify') "{{{
+	let g:signify_vcs_list = [ 'svn', 'hg', 'bzr' ]
+	let signify_update_on_focusgained = 0
+	call neobundle#untap()
 endif "}}}

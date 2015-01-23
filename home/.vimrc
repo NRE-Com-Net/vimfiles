@@ -215,12 +215,22 @@ function! CopyModeToggle()
 		setlocal nolist
 		setlocal nonumber
 		setlocal foldcolumn=0
-		call sy#stop(b:sy.buffer)
+		if neobundle#is_sourced('vim-signify')
+			call sy#stop(b:sy.buffer)
+		endif
+		if neobundle#is_sourced('vim-gitgutter')
+			GitGutterSignsDisable
+		endif
 	else
 		setlocal foldcolumn=1
 		setlocal list
 		setlocal number
-		call sy#start()
+		if neobundle#is_sourced('vim-signify')
+			call sy#start()
+		endif
+		if neobundle#is_sourced('vim-gitgutter')
+			GitGutterSignsEnable
+		endif
 	endif
 endfunction
 
