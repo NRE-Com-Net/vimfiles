@@ -189,6 +189,11 @@ endif "}}}
 
 if neobundle#tap('vim-signify') && neobundle#is_sourced('vim-signify') "{{{
 	let g:signify_vcs_list = [ 'svn', 'hg', 'bzr' ]
-	let signify_update_on_focusgained = 0
+	let signify_update_on_focusgained = 1
+	let g:signify_sign_add               = '+'
+	let g:signify_sign_delete            = '_'
+	let g:signify_sign_delete_first_line = '‾'
+	let g:signify_sign_change            = '~'
+	let g:signify_sign_changedelete      = '~_'
 	call neobundle#untap()
 endif "}}}
