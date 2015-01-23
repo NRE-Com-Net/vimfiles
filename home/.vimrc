@@ -210,6 +210,11 @@ function! SetCursorPosition()
 endfunction
 autocmd BufReadPost * call SetCursorPosition()
 
+function! FullyRedraw()
+	nohls
+	syntax sync fromstart
+endfunction
+
 function! CopyModeToggle()
 	if &foldcolumn
 		setlocal nolist

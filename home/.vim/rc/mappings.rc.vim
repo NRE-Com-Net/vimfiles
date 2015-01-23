@@ -32,9 +32,10 @@ nnoremap <silent> <F11> :setlocal spell! spell?<CR>
 nnoremap <silent> <C-Right> :tabnext<CR>
 " Previous Tab
 nnoremap <silent> <C-Left> :tabprevious<CR>
+
 "make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+noremap <C-L> :call FullyRedraw()<CR><C-L>
+inoremap <C-L> <C-O>:call FullyRedraw()<CR>
 
 if has('clipboard')
 	xnoremap <silent> y "*y:let [@+,@"]=[@*,@*]<CR>
