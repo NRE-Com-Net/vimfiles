@@ -100,9 +100,6 @@ NeoBundle 'mbbill/undotree', {
 			\ }
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'altercation/vim-colors-solarized', {
-			\ 'autoload' : { 'unite_sources' : 'colorscheme', }
-			\ }
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'junkblocker/unite-tasklist'
@@ -173,3 +170,8 @@ NeoBundle 'violetyk/cake.vim', {
 			\ 'vim_version' : '7.3.885',
 			\ }
 NeoBundle 'bigbrozer/vim-nagios'
+
+" Colorschemes
+NeoBundle 'blueyed/vim-colors-solarized', {
+			\ 'autoload' : { 'unite_sources' : 'colorscheme', }
+			\ }
