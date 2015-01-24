@@ -99,7 +99,7 @@ NeoBundle 'mbbill/undotree', {
 			\ 'vim_version' : '7.3',
 			\ }
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'junkblocker/unite-tasklist'

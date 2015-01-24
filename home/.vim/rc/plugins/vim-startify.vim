@@ -1,7 +1,7 @@
 autocmd FileType startify setlocal nospell
 let g:startify_custom_header = [
 			\ '						Keybindings',
-			\ '	Function Keys (Work in normal-)and inputmode):',
+			\ '	Function Keys (Work in normal- and inputmode):',
 			\ '	F1		=> Menu					F2		=> Filebrowser',
 			\ '	F3		=> Tagbar				F4		=> Bufferlist',
 			\ '	F5		=> Undotree				F6		=> CopyMode',
