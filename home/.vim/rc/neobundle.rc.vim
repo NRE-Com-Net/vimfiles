@@ -142,6 +142,7 @@ NeoBundle 'mhinz/vim-signify'
 NeoBundle 'int3/vim-extradite', {
 			\ 'depends' : 'tpope/vim-fugitive'
 			\ }
+NeoBundle 'airblade/vim-rooter'
 
 " Syntax
 NeoBundle 'tpope/vim-rails'
