@@ -136,7 +136,7 @@ NeoBundle 'zhaocai/DirDiff.vim'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'ap/vim-css-color'
-NeoBundle 'inkarkat/file-line'
+NeoBundle 'blueyed/file-line'
 NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'int3/vim-extradite', {

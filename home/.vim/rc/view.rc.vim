@@ -99,8 +99,8 @@ set cmdwinheight=5
 set noequalalways
 
 " Adjust window size of preview and help.
-set previewheight=8
-set helpheight=12
+set previewheight=25
+set helpheight=25
 
 " Don't redraw while macro executing.
 set lazyredraw

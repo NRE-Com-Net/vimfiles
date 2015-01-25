@@ -197,3 +197,9 @@ if neobundle#tap('vim-signify') && neobundle#is_sourced('vim-signify') "{{{
 	let g:signify_sign_changedelete      = '~_'
 	call neobundle#untap()
 endif "}}}
+
+if neobundle#tap('vim-extradite') && neobundle#is_sourced('vim-extradite') "{{{
+	nnoremap <silent> <F6> :Extradite!<CR>
+	:inoremap <F6> <C-o>:<C-u>Extradite!<CR>
+	call neobundle#untap()
+endif "}}}
