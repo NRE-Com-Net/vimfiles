@@ -35,11 +35,11 @@ nnoremap <silent> N :<C-u>UnitePrevious search<CR>
 
 " Default configuration.
 let g:unite_enable_short_source_names = 1
-let g:unite_abbr_highlight = 'TabLine'
 let g:unite_kind_file_vertical_preview = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_source_history_yank_enable = 1
+let g:unite_enable_start_insert = 0
 " For unite-alias.
 let g:unite_source_alias_aliases = {}
 let g:unite_source_alias_aliases.line_migemo = 'line'

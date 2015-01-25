@@ -62,7 +62,7 @@ set infercase
 " Enable folding.
 set nofoldenable
 " set foldmethod=expr
-set foldmethod=marker
+set foldmethod=syntax
 " Show folding level.
 set foldcolumn=1
 set fillchars=vert:\|
