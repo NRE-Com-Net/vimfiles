@@ -18,7 +18,7 @@ else
 	endif "}}}
 endif
 
-if neobundle#tap('neosnippet.vim') "{{{
+if neobundle#tap('neosnippet.vim') && neobundle#is_sourced('neosnippet.vim') "{{{
 	let neobundle#hooks.on_source = '~/.vim/rc/plugins/neosnippet.rc.vim'
 	call neobundle#untap()
 endif "}}}

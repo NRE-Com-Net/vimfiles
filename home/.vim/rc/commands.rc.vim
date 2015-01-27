@@ -47,4 +47,6 @@ au User fugitive
 			\ endif
 au BufReadPost fugitive://* set bufhidden=delete
 
-
+if neobundle#is_sourced('neosnippet.vim') "{{{
+	autocmd InsertLeave * NeoSnippetClearMarkers
+endif "}}}
