@@ -203,3 +203,8 @@ if neobundle#tap('vim-extradite') && neobundle#is_sourced('vim-extradite') "{{{
 	:inoremap <F6> <C-o>:<C-u>Extradite!<CR>
 	call neobundle#untap()
 endif "}}}
+
+if neobundle#tap('unite-tasklist') && neobundle#is_sourced('unite-tasklist') "{{{
+	let g:unite_tasklist_ignorecase = 1
+	call neobundle#untap()
+endif "}}}
