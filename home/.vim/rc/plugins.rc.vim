@@ -163,7 +163,7 @@ if neobundle#tap('vim-diffchanges') && neobundle#is_sourced('vim-diffchanges') "
 endif "}}}
 
 if neobundle#tap('vim-trailing-whitespace') && neobundle#is_sourced('vim-trailing-whitespace') "{{{
-	let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler', 'vimfiler:explorer', 'startify']
+	let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler', 'vimshell', 'Help', 'vimfiler:explorer', 'startify']
 endif "}}}
 
 if neobundle#tap('vinarise.vim') && neobundle#is_sourced('vinarise.vim') "{{{
