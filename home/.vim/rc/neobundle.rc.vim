@@ -106,7 +106,7 @@ NeoBundle 'junkblocker/unite-tasklist'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'jrhorn424/vim-multiple-cursors'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mtscout6/vim-tagbar-css'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tsukkee/unite-tag', {
