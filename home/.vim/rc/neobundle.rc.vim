@@ -1,4 +1,3 @@
-NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleLazy 'Shougo/neocomplcache.vim', {
 			\ 'insert' : 1
 			\ }
@@ -17,14 +16,6 @@ NeoBundle 'Shougo/neosnippet.vim', {
 			\ 'filetypes' : 'snippet',
 			\ 'unite_sources' : [
 			\						'neosnippet', 'neosnippet/user', 'neosnippet/runtime'],
-			\ }
-NeoBundle 'Shougo/vimproc.vim', {
-			\ 'build' : {
-			\				'windows' : 'make -f make_mingw32.mak',
-			\				'cygwin' : 'make -f make_cygwin.mak',
-			\				'mac' : 'make -f make_mac.mak',
-			\				'unix' : 'make -f make_unix.mak',
-			\			}
 			\ }
 NeoBundle 'Shougo/vimshell.vim', {
 			\ 'commands' : [	{
@@ -57,7 +48,7 @@ NeoBundle 'Shougo/unite.vim', {
 NeoBundle 'Shougo/neomru.vim', {'autoload':{'unite_sources':
 			\ ['file_mru', 'directory_mru']}}
 NeoBundle 'Shougo/unite-build'
-NeoBundle 'Shougo/vinarise.vim'
+"NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Shougo/unite-sudo'
 NeoBundle 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 NeoBundle 'Shougo/unite-help', {'autoload':{'unite_sources':'help'}}
@@ -136,7 +127,7 @@ NeoBundle 'zhaocai/DirDiff.vim'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'ap/vim-css-color'
-NeoBundle 'blueyed/file-line'
+NeoBundle 'kopischke/vim-fetch'
 NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'int3/vim-extradite', {

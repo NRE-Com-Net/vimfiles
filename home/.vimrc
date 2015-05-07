@@ -7,6 +7,15 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+if &compatible
+	set nocompatible
+endif
+
+if has('nvim')
+	runtime! plugin/python_setup.vim
+	set unnamedclip
+endif
+
 function! g:Source_rc(path)
 	execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
 endfunction
@@ -30,13 +39,23 @@ endfunction
 
 call g:Source_rc('init.rc.vim')
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('$CACHE/neobundle'))
 
 " Use NeoBundleCache
-if neobundle#has_fresh_cache(resolve(expand('~/.vim/rc/neobundle.rc.vim')))
-	NeoBundleLoadCache
-else
-	NeoBundleClearCache
+if neobundle#load_cache(g:Source_rc('neobundle.rc.vim'))
+	NeoBundleFetch 'Shougo/neobundle.vim'
+
+	NeoBundle 'Shougo/vimproc.vim', {
+				\ 'build' : {
+				\     'windows' : 'tools\\update-dll-mingw',
+				\     'cygwin' : 'make -f make_cygwin.mak',
+				\     'mac' : 'make -f make_mac.mak',
+				\     'unix' : 'make -f make_unix.mak',
+				\    }
+				\ }
+
+	"call neobundle#load_toml(
+	"	\ '~/.vim/rc/neobundle.toml', {'lazy' : 1})
 	call g:Source_rc('neobundle.rc.vim')
 	NeoBundleSaveCache
 	NeoBundleClean
@@ -54,8 +73,9 @@ filetype plugin indent on
 syntax on
 
 " Installation check.
-NeoBundleCheck
-
+if !has('vim_starting')
+	NeoBundleCheck
+endif
 
 "--------------------------------------------------------------------------------------------------
 " Encoding:

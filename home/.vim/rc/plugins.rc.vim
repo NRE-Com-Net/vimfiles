@@ -171,16 +171,16 @@ if neobundle#tap('vinarise.vim') && neobundle#is_sourced('vinarise.vim') "{{{
 	call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('promptline.vim') && neobundle#is_sourced('promptline.vim') "{{{
-	let g:promptline_theme = 'powerlineclone'
-	let g:promptline_preset = {
-		\'a' : [ promptline#slices#user(), promptline#slices#host() ],
-		\'b' : [ promptline#slices#vcs_branch({'git': 1, 'hg': 1, 'svn': 1}), promptline#slices#git_status() ],
-		\'c' : [ promptline#slices#python_virtualenv() ],
-		\'y' : [ promptline#slices#cwd() ],
-		\'warn' : [ promptline#slices#last_exit_code() ]}
-	call neobundle#untap()
-endif "}}}
+"if neobundle#tap('promptline.vim') && neobundle#is_sourced('promptline.vim') "{{{
+"	let g:promptline_theme = 'powerlineclone'
+"	let g:promptline_preset = {
+"		\'a' : [ promptline#slices#user(), promptline#slices#host() ],
+"		\'b' : [ promptline#slices#vcs_branch({'git': 1, 'hg': 1, 'svn': 1}), promptline#slices#git_status() ],
+"		\'c' : [ promptline#slices#python_virtualenv() ],
+"		\'y' : [ promptline#slices#cwd() ],
+"		\'warn' : [ promptline#slices#last_exit_code() ]}
+"	call neobundle#untap()
+"endif "}}}
 
 if neobundle#tap('vim-startify') && neobundle#is_sourced('vim-startify') "{{{
 	let neobundle#hooks.on_source = '~/.vim/rc/plugins/vim-startify.vim'

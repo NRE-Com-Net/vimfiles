@@ -24,8 +24,8 @@ augroup MyAutoCmd
 	autocmd FileType ref nnoremap <buffer> <TAB> <C-w>w
 
 	" Enable omni completion.
-	autocmd FileType ada setlocal omnifunc=adacomplete#Complete
-	autocmd FileType c setlocal omnifunc=ccomplete#Complete
+	"autocmd FileType ada setlocal omnifunc=adacomplete#Complete
+	"autocmd FileType c setlocal omnifunc=ccomplete#Complete
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -79,6 +79,9 @@ let g:java_highlight_functions=1
 " JavaScript
 let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_CaseIndentLevel = -1
+
+" Markdown
+let g:markdown_fenced_languages = []
 
 " Go
 if $GOROOT != ''
@@ -137,6 +140,11 @@ function! s:my_on_filetype() "{{{
 	" Disable auto wrap.
 	if &l:textwidth != 70 && &filetype !=# 'help'
 		setlocal textwidth=0
+	endif
+
+	" Use FoldCCtext().
+	if &filetype !=# 'help'
+		setlocal foldtext=FoldCCtext()
 	endif
 
 	if !&l:modifiable
