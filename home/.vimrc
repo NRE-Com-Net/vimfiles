@@ -39,7 +39,7 @@ endfunction
 
 call g:Source_rc('init.rc.vim')
 
-call neobundle#begin(expand('$CACHE/neobundle'))
+call neobundle#begin(expand('$CACHE'))
 
 " Use NeoBundleCache
 if neobundle#load_cache(g:Source_rc('neobundle.rc.vim'))
@@ -73,9 +73,7 @@ filetype plugin indent on
 syntax on
 
 " Installation check.
-if !has('vim_starting')
-	NeoBundleCheck
-endif
+NeoBundleCheck
 
 "--------------------------------------------------------------------------------------------------
 " Encoding:

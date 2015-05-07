@@ -41,7 +41,7 @@ if IsWindows()
 	set shellslash
 endif
 
-let $CACHE = expand('~/.vim/cache')
+let $CACHE = expand('~/.vim/bundle')
 
 if !isdirectory(expand($CACHE))
 	call mkdir(expand($CACHE), 'p')
