@@ -46,8 +46,12 @@ set matchpairs+=<:>
 " Display another buffer when current buffer isn't saved.
 set hidden
 
-"turn on spell checking
-set spell
+if has('nvim')
+	set nospell
+else
+	"turn on spell checking
+	set spell
+endif
 
 " Auto reload if file is changed.
 "set autoread

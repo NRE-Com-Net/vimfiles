@@ -13,7 +13,6 @@ endif
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
-	set unnamedclip
 endif
 
 function! g:Source_rc(path)

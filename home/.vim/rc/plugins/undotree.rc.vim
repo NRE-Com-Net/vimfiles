@@ -114,7 +114,7 @@ endif
 "endfunction
 
 "=================================================
-function g:Undotree_CustomMap()
+function! g:Undotree_CustomMap()
 	map <buffer> OA K
 	map <buffer> OB J
 endfunction
