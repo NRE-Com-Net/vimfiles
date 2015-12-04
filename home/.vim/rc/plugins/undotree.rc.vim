@@ -1,7 +1,5 @@
 "=================================================
 "Options:
-nnoremap <silent> <F5> :UndotreeToggle<CR>
-:imap <F5> <C-o>:UndotreeToggle<CR>
 " Window layout
 " style 1
 " +----------+------------------------+

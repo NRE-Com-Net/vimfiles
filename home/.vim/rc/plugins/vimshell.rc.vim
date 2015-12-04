@@ -2,8 +2,6 @@
 " vimshell.vim
 "
 " <C-Space>: switch to vimshell
-nmap <C-@>  <Plug>(vimshell_switch)
-nnoremap !  q:VimShellExecute<Space>
 let g:vimshell_interactive_update_time = 10
 let g:vimshell_smart_case = 1
 autocmd MyAutoCmd FileType vimshell imap <buffer> <C-d> <Plug>(vimshell_exit)

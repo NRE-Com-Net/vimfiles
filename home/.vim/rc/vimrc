@@ -1,0 +1,169 @@
+" NemesisRE's .vimrc (shameless taken from https://github.com/Shougo/shougo-s-github)
+"--------------------------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------------------------
+" Initialize:
+"
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+if &compatible
+	set nocompatible
+endif
+
+if has('nvim')
+	runtime! plugin/python_setup.vim
+endif
+
+function! g:Source_rc(path)
+	execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
+endfunction
+
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_sudo = $SUDO_USER != '' && $USER !=# $SUDO_USER
+			\ && $HOME !=# expand('~'.$USER)
+			\ && $HOME ==# expand('~'.$SUDO_USER)
+
+function! IsWindows()
+	return s:is_windows
+endfunction
+
+function! IsMac()
+	return !s:is_windows && !s:is_cygwin
+				\ && (has('mac') || has('macunix') || has('gui_macvim') ||
+				\   (!executable('xdg-open') &&
+				\     system('uname') =~? '^darwin'))
+endfunction
+
+call g:Source_rc('init.rc.vim')
+
+call neobundle#begin(expand('$CACHE'))
+
+" Use NeoBundleCache
+if neobundle#load_cache()
+	NeoBundleFetch 'Shougo/neobundle.vim'
+
+	call neobundle#load_toml(
+				\ '~/.vim/rc/neobundle.toml')
+	call neobundle#load_toml(
+				\ '~/.vim/rc/neobundlelazy.toml', {'lazy' : 1})
+
+	NeoBundleSaveCache
+	NeoBundleClean
+endif
+
+let s:vimrc_local = findfile('vimrc_local.vim', '.;')
+if s:vimrc_local !=# ''
+	" Load develop version.
+	call neobundle#local(fnamemodify(s:vimrc_local, ':h'),
+				\ {}, ['vim*', 'unite-*', 'neco-*', '*.vim', '*.nvim'])
+endif
+
+" NeoBundle configurations.
+
+call g:Source_rc('plugins.rc.vim')
+
+call neobundle#end()
+
+"load ftplugins and indent files
+filetype plugin indent on
+"turn on syntax highlighting
+syntax on
+
+if !has('vim_starting')
+	" Installation check.
+	NeoBundleCheck
+endif
+
+"--------------------------------------------------------------------------------------------------
+" Encoding:
+"
+
+call g:Source_rc('encoding.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Search:
+"
+
+" Ignore the case of normal letters.
+set ignorecase
+" If the search pattern contains upper case characters, override ignorecase option.
+set smartcase
+
+" Enable incremental search.
+set incsearch
+" Don't highlight search result.
+set hlsearch
+
+" Searches wrap around the end of the file.
+set wrapscan
+
+"--------------------------------------------------------------------------------------------------
+" Edit:
+"
+
+call g:Source_rc('edit.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" View:
+"
+
+call g:Source_rc('view.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" FileType:
+"
+
+call g:Source_rc('filetype.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Mappings:
+"
+
+call g:Source_rc('mappings.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Platform:
+"
+
+if has('nvim')
+	call g:Source_rc('neovim.rc.vim')
+endif
+
+if s:is_windows
+	call g:Source_rc('windows.rc.vim')
+else
+	call g:Source_rc('unix.rc.vim')
+endif
+
+"--------------------------------------------------------------------------------------------------
+" Commands:
+"
+call g:Source_rc('commands.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" GUI:
+"
+
+if has('gui_running')
+	call g:Source_rc('gui.rc.vim')
+endif
+
+"--------------------------------------------------------------------------------------------------
+" Others:
+"
+
+" If true Vim master, use English help file.
+set helplang& helplang=en
+
+" Default home directory.
+let t:cwd = getcwd()
+
+call neobundle#call_hook('on_source')
+
+set secure
+
+colorscheme solarized
+NeoBundleSource vim-airline
+
+" vim: foldmethod=marker

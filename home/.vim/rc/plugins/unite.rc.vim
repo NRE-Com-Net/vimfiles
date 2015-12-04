@@ -1,172 +1,249 @@
 "---------------------------------------------------------------------------
 " unite.vim
 "
-" FIXME: insert mode after leaving unite
 
-" The prefix key.
-nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
-inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
-nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
-inoremap <silent> <F4> <C-o>:<C-u>Unite buffer_tab -toggle -start-insert<CR>
-nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
-nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
-inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-" Execute help.
-nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
-" Execute help by cursor keyword.
-nnoremap <silent> g<C-h>	:<C-u>UniteWithCursorWord help<CR>
-" Search.
-nnoremap <silent><expr> / ":\<C-u>Unite -buffer-name=search line:all -start-insert -no-quit\<CR>"
-nnoremap <expr> g/  <SID>smart_search_expr('g/',
-			\ :<C-u>Unite -buffer-name=search -start-insert line_migemo<CR>)
-nnoremap <silent><expr> ? ":\<C-u>Unite -buffer-name=search%".bufnr('%')." -start-insert line:backward\<CR>"
-nnoremap <silent><expr> * ":\<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:forward:wrap\<CR>"
-cnoremap <expr><silent><C-g> (getcmdtype() == '/') ?
-			\ "\<ESC>:Unite -buffer-name=search line:forward:wrap -input=".getcmdline()."\<CR>" : "\<C-g>"
-function! s:smart_search_expr(expr1, expr2)
-	return line('$') > 5000 ?  a:expr1 : a:expr2
-endfunction
-" FIXME: Search next and previous doesnt work.
-nnoremap <silent> n :<C-u>UniteNext search<CR>
-nnoremap <silent> N :<C-u>UnitePrevious search<CR>
+let g:unite_enable_auto_select = 0
 
-" Default configuration.
 let g:unite_enable_short_source_names = 1
 let g:unite_kind_file_vertical_preview = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_source_history_yank_enable = 1
-let g:unite_enable_start_insert = 0
+
+" For unite-menu.
+let g:unite_source_menu_menus = {}
+
+let g:unite_source_menu_menus.enc = {
+      \     'description' : 'Open with a specific character code again.',
+      \ }
+let g:unite_source_menu_menus.enc.command_candidates = [
+      \       ['utf8', 'Utf8'],
+      \       ['iso2022jp', 'Iso2022jp'],
+      \       ['cp932', 'Cp932'],
+      \       ['euc', 'Euc'],
+      \       ['utf16', 'Utf16'],
+      \       ['utf16-be', 'Utf16be'],
+      \       ['jis', 'Jis'],
+      \       ['sjis', 'Sjis'],
+      \       ['unicode', 'Unicode'],
+      \     ]
+
+let g:unite_source_menu_menus.fenc = {
+      \     'description' : 'Change file fenc option.',
+      \ }
+let g:unite_source_menu_menus.fenc.command_candidates = [
+      \       ['utf8', 'WUtf8'],
+      \       ['iso2022jp', 'WIso2022jp'],
+      \       ['cp932', 'WCp932'],
+      \       ['euc', 'WEuc'],
+      \       ['utf16', 'WUtf16'],
+      \       ['utf16-be', 'WUtf16be'],
+      \       ['jis', 'WJis'],
+      \       ['sjis', 'WSjis'],
+      \       ['unicode', 'WUnicode'],
+      \     ]
+
+let g:unite_source_menu_menus.ff = {
+      \     'description' : 'Change file format option.',
+      \ }
+let g:unite_source_menu_menus.ff.command_candidates = {
+      \       'unix'   : 'WUnix',
+      \       'dos'    : 'WDos',
+      \       'mac'    : 'WMac',
+      \     }
+
+let g:unite_source_menu_menus.unite = {
+      \     'description' : 'Start unite sources',
+      \ }
+let g:unite_source_menu_menus.unite.command_candidates = {
+      \       'history'    : 'Unite history/command',
+      \       'quickfix'   : 'Unite qflist -no-quit',
+      \       'resume'     : 'Unite -buffer-name=resume resume',
+      \       'directory'  : 'Unite -buffer-name=files '.
+      \             '-default-action=lcd directory_mru',
+      \       'mapping'    : 'Unite mapping',
+      \       'message'    : 'Unite output:message',
+      \       'scriptnames': 'Unite output:scriptnames',
+      \     }
+
 " For unite-alias.
 let g:unite_source_alias_aliases = {}
+let g:unite_source_alias_aliases.test = {
+      \ 'source' : 'file_rec',
+      \ 'args'   : '~/',
+      \ }
 let g:unite_source_alias_aliases.line_migemo = 'line'
 let g:unite_source_alias_aliases.calc = 'kawaii-calc'
 let g:unite_source_alias_aliases.l = 'launcher'
 let g:unite_source_alias_aliases.kill = 'process'
 let g:unite_source_alias_aliases.message = {
-			\ 'source' : 'output',
-			\ 'args'   : 'message',
-			\ }
+      \ 'source' : 'output',
+      \ 'args'   : 'message',
+      \ }
 let g:unite_source_alias_aliases.mes = {
-			\ 'source' : 'output',
-			\ 'args'   : 'message',
-			\ }
+      \ 'source' : 'output',
+      \ 'args'   : 'message',
+      \ }
 let g:unite_source_alias_aliases.scriptnames = {
-			\ 'source' : 'output',
-			\ 'args'   : 'scriptnames',
-			\ }
+      \ 'source' : 'output',
+      \ 'args'   : 'scriptnames',
+      \ }
+
+autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+
+let g:unite_ignore_source_files = []
+
+call unite#custom#profile('action', 'context', {
+      \ 'start_insert' : 1
+      \ })
 
 " migemo.
 call unite#custom#source('line_migemo', 'matchers', 'matcher_migemo')
 
 " Custom filters."{{{
 call unite#custom#source(
-			\ 'buffer,file_rec,file_rec/async,file_rec/git', 'matchers',
-			\ ['converter_relative_word', 'matcher_fuzzy',
-			\  'matcher_project_ignore_files'])
+      \ 'buffer,file_rec,file_rec/async,file_rec/git', 'matchers',
+      \ ['converter_relative_word', 'matcher_fuzzy'])
 call unite#custom#source(
-			\ 'file_mru', 'matchers',
-			\ ['matcher_project_files', 'matcher_fuzzy'])
+      \ 'file_mru', 'matchers',
+      \ ['matcher_project_files', 'matcher_fuzzy',
+      \  'matcher_hide_hidden_files', 'matcher_hide_current_file'])
+" call unite#custom#source(
+"       \ 'file', 'matchers',
+"       \ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
 call unite#custom#source(
-			\ 'file', 'matchers',
-			\ ['matcher_fuzzy', 'matcher_hide_hidden_files'])
-call unite#custom#source(
-			\ 'file_rec,file_rec/async,file_rec/git,file_mru', 'converters',
-			\ ['converter_file_directory'])
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+      \ 'file_rec,file_rec/async,file_rec/git,file_mru', 'converters',
+      \ ['converter_file_directory'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+" call unite#filters#sorter_default#use(['sorter_length'])
 "}}}
 
 function! s:unite_my_settings() "{{{
-	" Directory partial match.
-	call unite#custom#alias('file', 'h', 'left')
-	call unite#custom#default_action('directory', 'narrow')
+  " Directory partial match.
+  call unite#custom#alias('file', 'h', 'left')
+  call unite#custom#default_action('directory', 'narrow')
+  " call unite#custom#default_action('file', 'my_tabopen')
 
-	call unite#custom#default_action('versions/git/status', 'commit')
+  call unite#custom#default_action('versions/git/status', 'commit')
 
-	" Overwrite settings.
-	imap <silent><buffer><expr> <C-x> unite#do_action('split')
-	nmap <silent><buffer><expr> <C-x> unite#do_action('split')
-	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-	nmap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-	imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-	nmap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-	imap <buffer>  jj        <Plug>(unite_insert_leave)
-	imap <buffer>  <Tab>     <Plug>(unite_complete)
-	imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
-	imap <buffer> '          <Plug>(unite_quick_match_default_action)
-	nmap <buffer> '          <Plug>(unite_quick_match_default_action)
-	nmap <buffer> cd         <Plug>(unite_quick_match_default_action)
-	nmap <buffer> <C-z>      <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-z>      <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
-	nmap <buffer> <C-j>      <Plug>(unite_toggle_auto_preview)
-	nnoremap <silent><buffer> <Tab>     <C-w>w
-	let unite = unite#get_current_unite()
-	if unite.profile_name ==# '^search'
-		nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-	else
-		nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-	endif
+  " call unite#custom#default_action('directory', 'cd')
 
-	nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-	nnoremap <silent><buffer><expr> x     unite#do_action('start')
-	nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-				\ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+  " Overwrite settings.
+  imap <buffer>  <BS>      <Plug>(unite_delete_backward_path)
+  imap <buffer>  jj        <Plug>(unite_insert_leave)
+  imap <buffer>  <Tab>     <Plug>(unite_complete)
+  imap <buffer> '          <Plug>(unite_quick_match_default_action)
+  nmap <buffer> '          <Plug>(unite_quick_match_default_action)
+  nmap <buffer> cd         <Plug>(unite_quick_match_default_action)
+  nmap <buffer> <C-z>      <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-z>      <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
+  nmap <buffer> <C-j>      <Plug>(unite_toggle_auto_preview)
+  nnoremap <silent><buffer> <Tab>     <C-w>w
+  nnoremap <silent><buffer><expr> l
+        \ unite#smart_map('l', unite#do_action('default'))
+  nnoremap <silent><buffer><expr> P
+        \ unite#smart_map('P', unite#do_action('insert'))
+
+  let unite = unite#get_current_unite()
+  if unite.profile_name ==# '^search'
+    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+  else
+    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+  endif
+
+  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+  nnoremap <silent><buffer><expr> !     unite#do_action('start')
+  nnoremap <buffer><expr> S
+        \ unite#mappings#set_current_sorters(
+        \  empty(unite#mappings#get_current_sorters()) ?
+        \   ['sorter_reverse'] : [])
+  nnoremap <buffer><expr> cof
+        \ unite#mappings#set_current_matchers(
+        \ empty(unite#mappings#get_current_matchers()) ?
+        \ ['matcher_fuzzy'] : [])
+  nmap <buffer> x     <Plug>(unite_quick_match_jump)
 endfunction"}}}
-autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 
-if executable('ag')
-	" Use ag in unite grep source.
-	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts =
-				\ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-				\  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-	let g:unite_source_grep_recursive_opt = ''
-elseif executable('pt')
-	let g:unite_source_grep_command = 'pt'
-	let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-	let g:unite_source_grep_recursive_opt = ''
-elseif executable('jvgrep')
-	" For jvgrep.
-	let g:unite_source_grep_command = 'jvgrep'
-	let g:unite_source_grep_default_opts = '--exclude ''\.(git|svn|hg|bzr)'''
-	let g:unite_source_grep_recursive_opt = '-R'
-elseif executable('ack-grep')
-	" For ack.
-	let g:unite_source_grep_command = 'ack-grep'
-	let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
-	let g:unite_source_grep_recursive_opt = ''
-endif
-
-let g:unite_build_error_icon    = '~/.vim/signs/err.'
-			\ . (IsWindows() ? 'bmp' : 'png')
-let g:unite_build_warning_icon  = '~/.vim/signs/warn.'
-			\ . (IsWindows() ? 'bmp' : 'png')
-let g:unite_source_rec_max_cache_files = -1
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-			\ 'ignore_pattern', join([
-			\ '\.git/',
-			\ ], '\|'))
-
+" Default configuration.
 let default_context = {
-			\ 'vertical' : 0,
-			\ 'cursor_line_highlight' : 'TabLineSel',
-			\ 'complete' : 1,
-			\ 'start_insert' : 0,
-			\ }
+      \ 'vertical' : 0,
+      \ 'short_source_names' : 1,
+      \ }
+
+" let g:unite_abbr_highlight = 'TabLine'
 
 if IsWindows()
 else
-	" Like Textmate icons.
-	let g:unite_marked_icon = '✗'
-	let default_context.prompt = '» '
+  " Prompt choices.
+  " let default_context.prompt = '» '
 endif
 
 call unite#custom#profile('default', 'context', default_context)
+
+if executable('hw')
+  " Use hw(highway)
+  " https://github.com/tkengo/highway
+  let g:unite_source_grep_command = 'hw'
+  let g:unite_source_grep_default_opts = '--no-group --no-color'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ag')
+  " Use ag(the silver searcher)
+  " https://github.com/ggreer/the_silver_searcher
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+        \ '-i --vimgrep --hidden --ignore ' .
+        \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('pt')
+  " Use pt(the platinum searcher)
+  " https://github.com/monochromegane/the_platinum_searcher
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('jvgrep')
+  " For jvgrep
+  " https://github.com/mattn/jvgrep
+  let g:unite_source_grep_command = 'jvgrep'
+  let g:unite_source_grep_default_opts = '-i --exclude ''\.(git|svn|hg|bzr)'''
+  let g:unite_source_grep_recursive_opt = '-R'
+endif
+
+" if executable('ack')
+"   " For ack
+"   "http://beyondgrep.com/
+"   let g:unite_source_grep_command = 'ack'
+"   let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+"   let g:unite_source_grep_recursive_opt = ''
+" endif
+
+" let g:unite_source_rec_async_command =
+"       \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+
+let g:unite_build_error_icon    = '~/.vim/signs/err.'
+      \ . (IsWindows() ? 'bmp' : 'png')
+let g:unite_build_warning_icon  = '~/.vim/signs/warn.'
+      \ . (IsWindows() ? 'bmp' : 'png')
+
+let g:unite_source_rec_max_cache_files = -1
+
+" My custom split action
+let s:my_split = {'is_selectable': 1}
+function! s:my_split.func(candidate)
+  let split_action = 'vsplit'
+  if winwidth(winnr('#')) <= 2 * (&tw ? &tw : 80)
+    let split_action = 'split'
+  endif
+  call unite#take_action(split_action, a:candidate)
+endfunction
+call unite#custom_action('openable', 'context_split', s:my_split)
+unlet s:my_split
+
+nnoremap <silent> <Leader>st :NeoCompleteIncludeMakeCache<CR>
+            \ :UniteWithCursorWord -immediately -sync
+            \ -default-action=context_split tag/include<CR>
+nnoremap <silent> [Space]n  :UniteNext<CR>
+nnoremap <silent> [Space]p  :UnitePrevious<CR>
 
 " Source Menu
 call g:Source_rc('plugins/unite.menu.vim')

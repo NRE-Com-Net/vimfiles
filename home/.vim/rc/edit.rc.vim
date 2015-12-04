@@ -102,7 +102,11 @@ if v:version >= 703
 	set undodir=~/.vim/undofiles
 	set undolevels=1000
 	set undoreload=10000
-	set viminfo='50,f1,<500,@100,h,%,/50,:100,n~/.vim/.viminfo
+	if has('nvim')
+		set viminfo='50,f1,<500,@100,h,%,/50,:100,n~/.vim/.nviminfo
+	else
+		set viminfo='50,f1,<500,@100,h,%,/50,:100,n~/.vim/.viminfo
+	endif
 	set backupdir=~/.vim/backupfiles
 	set colorcolumn=100
 endif
