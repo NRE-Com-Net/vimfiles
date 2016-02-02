@@ -53,7 +53,10 @@ repository = 'junkblocker/unite-tasklist'
 repository = 'majutsushi/tagbar'
 
 [[plugins]]
-repository = 'bling/vim-airline'
+repository = 'vim-airline/vim-airline'
+
+[[plugins]]
+repository = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repository = 'airblade/vim-gitgutter'
