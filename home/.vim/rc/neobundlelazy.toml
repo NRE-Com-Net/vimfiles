@@ -482,3 +482,7 @@ filetypes = ['php','ctp']
 [[plugins]]
 repository = 'bigbrozer/vim-nagios'
 filetypes = 'ruby'
+
+[[plugins]]
+repository = 'saltstack/salt-vim'
+filetypes = 'salt'
