@@ -134,13 +134,4 @@ repository = 'blueyed/vim-colors-solarized'
 unite_sources = 'colorscheme'
 
 [[plugins]]
-repository = 'MaxSt/FlatColor'
-unite_sources = 'colorscheme'
-
-[[plugins]]
-repository = 'nanotech/jellybeans.vim'
-unite_sources = 'colorscheme'
-
-[[plugins]]
-repository = 'blackgate/tropikos-vim-theme'
-unite_sources = 'colorscheme'
+repository = 'Konfekt/FastFold'
