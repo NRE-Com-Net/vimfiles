@@ -6,23 +6,22 @@
 set t_Co=256
 
 set tags=./.tags;,~/.vimtags
+let s:is_windows = has('win32') || has('win64')
 
-if exists('&regexpengine')
-	" Use old regexp engine.
-	" set regexpengine=1
-endif
+function! IsWindows() abort
+  return s:is_windows
+endfunction
+
+function! IsMac() abort
+  return !s:is_windows && !has('win32unix')
+      \ && (has('mac') || has('macunix') || has('gui_macvim')
+      \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
+endfunction
 
 " Use English interface.
-if IsWindows()
-	" For Windows.
-	language message en
-else
-	" For Linux.
-	language message C
-endif
+language message C
 
 " Use ',' instead of '\'.
-" It is not mapped with respect well unless I set it before setting for plug in.
 " Use <Leader> in global plugin.
 let g:mapleader = ','
 " Use <LocalLeader> in filetype plugin.
@@ -37,73 +36,62 @@ nnoremap ,  <Nop>
 xnoremap ,  <Nop>
 
 if IsWindows()
-	" Exchange path separator.
-	set shellslash
+  " Exchange path separator.
+   set shellslash
 endif
 
-let $CACHE = expand('~/.vim/bundle')
+let $CACHE = expand('~/.cache')
 
 if !isdirectory(expand($CACHE))
-	call mkdir(expand($CACHE), 'p')
+  call mkdir(expand($CACHE), 'p')
 endif
-
-" Set augroup.
-augroup MyAutoCmd
-	autocmd!
-augroup END
 
 if filereadable(expand('~/.secret_vimrc'))
-	execute 'source' expand('~/.secret_vimrc')
+  execute 'source' expand('~/.secret_vimrc')
 endif
 
-let s:neobundle_dir = expand('~/.vim/bundle')
-
-if !isdirectory(s:neobundle_dir.'/.neobundle')
-	call mkdir(s:neobundle_dir.'/.neobundle', 'p')
+" Load dein.
+let s:dein_dir = finddir('dein.vim', '.;')
+if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
+  if s:dein_dir == '' && &runtimepath !~ '/dein.vim'
+    let s:dein_dir = expand('$CACHE/dein')
+          \. '/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
+  endif
+  execute ' set runtimepath^=' . substitute(
+        \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
 endif
 
-if has('vim_starting') "{{{
-	" Set runtimepath.
-	if IsWindows()
-		let &runtimepath = join([
-					\ expand('~/.vim'),
-					\ expand('$VIM/runtime'),
-					\ expand('~/.vim/after')], ',')
-	endif
-
-	" Load neobundle.
-	if isdirectory('neobundle.vim')
-		set runtimepath^=neobundle.vim
-	elseif finddir('neobundle.vim', '.;') != ''
-		execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
-	elseif &runtimepath !~ '/neobundle.vim'
-		if !isdirectory(s:neobundle_dir.'/neobundle.vim')
-			execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
-						\ (exists('$http_proxy') ? 'https' : 'git'))
-						\ s:neobundle_dir.'/neobundle.vim'
-		endif
-
-		execute 'set runtimepath^=' . s:neobundle_dir.'/neobundle.vim'
-	endif
-endif
-"}}}
-
-let g:neobundle#default_options = {}
-" let g:neobundle#default_options._ = { 'verbose' : 1, 'focus' : 1 }
 
 "---------------------------------------------------------------------------
 " Disable default plugins
 
 " Disable menu.vim
 if has('gui_running')
-	set guioptions=Mc
+   set guioptions=Mc
 endif
 
-" Disable GetLatestVimPlugin.vim
-if !&verbose
-	let g:loaded_getscriptPlugin = 1
-endif
-
-let g:loaded_netrwPlugin = 1
-let g:loaded_2html_plugin = 1
-let g:loaded_vimballPlugin = 1
+let g:loaded_gzip              = 1
+let g:loaded_tar               = 1
+let g:loaded_tarPlugin         = 1
+let g:loaded_zip               = 1
+let g:loaded_zipPlugin         = 1
+let g:loaded_rrhelper          = 1
+let g:loaded_2html_plugin      = 1
+let g:loaded_vimball           = 1
+let g:loaded_vimballPlugin     = 1
+let g:loaded_getscript         = 1
+let g:loaded_getscriptPlugin   = 1
+let g:loaded_netrw             = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_netrwSettings     = 1
+let g:loaded_netrwFileHandlers = 1
+let g:loaded_matchparen        = 1
+let g:loaded_LogiPat           = 1
+let g:loaded_logipat           = 1
+let g:loaded_tutor_mode_plugin = 1
+let g:loaded_spellfile_plugin  = 1
+let g:loaded_man               = 1
+let g:loaded_matchit           = 1
