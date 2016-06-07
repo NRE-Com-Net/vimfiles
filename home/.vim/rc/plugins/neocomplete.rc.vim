@@ -1,3 +1,4 @@
+
 "---------------------------------------------------------------------------
 " neocomplete.vim
 "
@@ -10,6 +11,8 @@ let g:neocomplete#enable_camel_case = 1
 
 " Use fuzzy completion.
 let g:neocomplete#enable_fuzzy_completion = 1
+
+" let g:neocomplete#enable_refresh_always = 1
 
 " Set auto completion length.
 let g:neocomplete#auto_completion_start_length = 2
@@ -44,19 +47,22 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#enable_auto_close_preview = 1
 
-let g:neocomplete#force_omni_input_patterns.ruby =
-      \ '[^. *\t]\.\w*\|\h\w*::\w*'
+" let g:neocomplete#force_omni_input_patterns.ruby =
+"       \ '[^. *\t]\.\w*\|\h\w*::\w*'
 " let g:neocomplete#sources#omni#input_patterns.ruby =
 "      \ '[^. *\t]\.\w*\|\h\w*::\w*'
 
-let g:neocomplete#force_omni_input_patterns.python =
-\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+let g:neocomplete#sources#omni#input_patterns.python =
+      \ '[^. *\t]\.\w*\|\h\w*'
 
 let g:neocomplete#sources#omni#functions.go =
       \ 'gocomplete#Complete'
 
 let g:neocomplete#sources#omni#input_patterns.php =
       \'\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+
+let g:neocomplete#sources#omni#input_patterns.lua =
+      \ '\w\+[.:]\|require\s*(\?["'']\w*'
 
 " Disable omni auto completion for Java.
 " let g:neocomplete#sources#omni#input_patterns.java = ''
@@ -65,7 +71,7 @@ let g:neocomplete#sources#omni#input_patterns.php =
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
+let g:neocomplete#keyword_patterns._ = '\h\k*(\?'
 let g:neocomplete#keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::\w*'
 let g:neocomplete#keyword_patterns.rst =
       \ '\$\$\?\w*\|[[:alpha:]_.\\/~-][[:alnum:]_.\\/~-]*\|\d\+\%(\.\d\+\)\+'
@@ -87,6 +93,9 @@ let g:neocomplete#sources#vim#complete_functions = {
       \}
 call neocomplete#custom#source('look', 'min_pattern_length', 4)
 " call neocomplete#custom#source('_', 'sorters', [])
+call neocomplete#custom#source('_', 'converters',
+      \ ['converter_add_paren', 'converter_remove_overlap',
+      \  'converter_delimiter', 'converter_abbr'])
 
 " mappings."{{{
 " <C-f>, <C-b>: page move.
@@ -103,13 +112,16 @@ inoremap <expr> '  pumvisible() ? "\<C-y>" : "'"
 
 inoremap <silent><expr> <C-x><C-f>
       \ neocomplete#start_manual_complete('file')
+inoremap <silent><expr> <C-x><C-l>
+      \ neocomplete#start_manual_complete('look')
 
 inoremap <expr> <C-g>     neocomplete#undo_completion()
-inoremap <expr> <C-l>     neocomplete#complete_common_string()
+" inoremap <expr> <C-l>     neocomplete#mappings#refresh()
+inoremap <expr> <C-l>     neocomplete#mappings#complete_common_string()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
+function! s:my_cr_function() abort
   return neocomplete#smart_close_popup() . "\<CR>"
 endfunction
 
@@ -118,7 +130,7 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ neocomplete#start_manual_complete()
-function! s:check_back_space() "{{{
+function! s:check_back_space() abort "{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}

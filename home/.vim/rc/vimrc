@@ -10,6 +10,9 @@ if &compatible
 	set nocompatible
 endif
 
+syntax enable
+filetype plugin indent on
+
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
@@ -51,7 +54,6 @@ call s:source_rc('dein.rc.vim')
 if !has('vim_starting')
 	call dein#call_hook('source')
 	call dein#call_hook('post_source')
-
 	syntax enable
 	filetype plugin indent on
 endif
@@ -90,12 +92,6 @@ call s:source_rc('edit.rc.vim')
 "
 
 call s:source_rc('view.rc.vim')
-
-"--------------------------------------------------------------------------------------------------
-" FileType:
-"
-
-"call s:source_rc('filetype.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " Mappings:
@@ -138,7 +134,5 @@ set helplang& helplang=en
 let t:cwd = getcwd()
 
 set secure
-
-colorscheme solarized
 
 " vim: foldmethod=marker

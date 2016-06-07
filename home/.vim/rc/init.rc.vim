@@ -1,11 +1,6 @@
 "---------------------------------------------------------------------------
 " Initialize:
 "
-
-" Enable 256 color terminal.
-set t_Co=256
-
-set tags=./.tags;,~/.vimtags
 let s:is_windows = has('win32') || has('win64')
 
 function! IsWindows() abort
@@ -17,6 +12,8 @@ function! IsMac() abort
       \ && (has('mac') || has('macunix') || has('gui_macvim')
       \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
+
+set tags=./.tags;,~/.vimtags
 
 " Use English interface.
 language message C

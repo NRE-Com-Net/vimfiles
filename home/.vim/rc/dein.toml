@@ -3,7 +3,12 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
+repo = 'scwood/vim-hybrid'
+hook_source = '''
+	syntax on
+	set background=dark
+	colorscheme hybrid
+'''
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
@@ -34,47 +39,11 @@ mappings = '.'
 repo = 'mbbill/undotree'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
 repo = 'tomtom/tcomment_vim'
 on_ft = 'all'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
-
-[[plugins]]
-repo = 'godlygeek/tabular'
-
-[[plugins]]
-repo = 'junkblocker/unite-tasklist'
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-hook_source = '''
-   let g:tagbar_singleclick = 1
-   let g:tagbar_sort = 0
-   nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
-   :imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_source = '''
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#show_buffers = 0
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme="powerlineish"
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]
 repo = 'mtscout6/vim-tagbar-css'
@@ -83,35 +52,10 @@ repo = 'mtscout6/vim-tagbar-css'
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
-repo = 'kopischke/unite-spell-suggest'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filetype'
-
-[[plugins]]
-repo = 'supermomonga/unite-kawaii-calc'
-
-[[plugins]]
-repo = 'gregsexton/MatchTag'
-
-[[plugins]]
-repo = 'vim-scripts/delimitMate.vim'
-
-[[plugins]]
-repo = 'xolox/vim-misc'
-
-[[plugins]]
-repo = 'xolox/vim-easytags'
-depends = 'xolox/vim-misc'
-
-[[plugins]]
 repo = 'pbrisbin/vim-mkdir'
 
 [[plugins]]
 repo = 'jmcantrell/vim-diffchanges'
-
-[[plugins]]
-repo = 'rhysd/auto-neobundle'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
@@ -126,9 +70,6 @@ repo = 'edkolev/promptline.vim'
 repo = 'ap/vim-css-color'
 
 [[plugins]]
-repo = 'kopischke/vim-fetch'
-
-[[plugins]]
 repo = 'vim-scripts/bufkill.vim'
 
 [[plugins]]
@@ -140,9 +81,3 @@ depends = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
-
-[[plugins]]
-repo = 'blueyed/vim-colors-solarized'
-
-[[plugins]]
-repo = 'Konfekt/FastFold'
