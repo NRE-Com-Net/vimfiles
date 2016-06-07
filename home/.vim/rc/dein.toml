@@ -4,7 +4,7 @@ build = 'make'
 
 [[plugins]]
 repo = 'scwood/vim-hybrid'
-hook_source = '''
+hook_add = '''
 	syntax on
 	set background=dark
 	colorscheme hybrid
@@ -39,8 +39,46 @@ mappings = '.'
 repo = 'mbbill/undotree'
 
 [[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
 repo = 'tomtom/tcomment_vim'
 on_ft = 'all'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'junkblocker/unite-tasklist'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+merge = 0
+hook_add = '''
+	filetype plugin indent on
+	let g:tagbar_singleclick = 1
+	let g:tagbar_sort = 0
+	nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
+	:imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'majutsushi/tagbar'
+merge = 0
+hook_add = '''
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#show_buffers = 1
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme="dark"
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -50,6 +88,22 @@ repo = 'mtscout6/vim-tagbar-css'
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'kopischke/unite-spell-suggest'
+
+[[plugins]]
+repo = 'gregsexton/MatchTag'
+
+[[plugins]]
+repo = 'vim-scripts/delimitMate.vim'
+
+[[plugins]]
+repo = 'xolox/vim-misc'
+
+[[plugins]]
+repo = 'xolox/vim-easytags'
+depends = 'xolox/vim-misc'
 
 [[plugins]]
 repo = 'pbrisbin/vim-mkdir'
@@ -81,3 +135,7 @@ depends = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
+
+[[plugins]]
+repo = 'Konfekt/FastFold'
+

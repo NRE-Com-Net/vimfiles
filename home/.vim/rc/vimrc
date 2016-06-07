@@ -10,9 +10,6 @@ if &compatible
 	set nocompatible
 endif
 
-syntax enable
-filetype plugin indent on
-
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
@@ -102,7 +99,6 @@ call s:source_rc('mappings.rc.vim')
 "--------------------------------------------------------------------------------------------------
 " Platform:
 "
-
 
 if has('nvim')
 	call s:source_rc('neovim.rc.vim')
