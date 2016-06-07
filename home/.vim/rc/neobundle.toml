@@ -130,7 +130,7 @@ depends = 'tpope/vim-fugitive'
 repository = 'airblade/vim-rooter'
 
 [[plugins]]
-repository = 'blueyed/vim-colors-solarized'
+repository = 'w0ng/vim-hybrid'
 unite_sources = 'colorscheme'
 
 [[plugins]]

@@ -162,7 +162,6 @@ call neobundle#call_hook('on_source')
 
 set secure
 
-colorscheme solarized
-NeoBundleSource vim-airline
+colorscheme hybrid
 
 " vim: foldmethod=marker

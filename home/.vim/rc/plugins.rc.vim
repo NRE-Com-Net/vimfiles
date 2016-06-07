@@ -170,11 +170,8 @@ if neobundle#tap('vim-airline') "{{{
 	call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-colors-solarized') "{{{
-	let g:solarized_termcolors=256
-	let g:solarized_termtrans=0
+if neobundle#tap('vim-hybrid') "{{{
 	set background=dark
-	NeoBundleSource vim-colors-solarized
 	call neobundle#untap()
 endif "}}}
 
