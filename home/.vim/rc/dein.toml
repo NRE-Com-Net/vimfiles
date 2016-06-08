@@ -1,0 +1,188 @@
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'scwood/vim-hybrid'
+hook_add = '''
+	syntax on
+	set background=dark
+	colorscheme hybrid
+'''
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+hook_source = 'source ~/.vim/rc/plugins/vim-startify.vim'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add  = '''
+	autocmd BufReadPost fugitive://* set bufhidden=delete
+	autocmd BufReadPost fugitive://*
+				\ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+				\   nnoremap <buffer> .. :edit %:h<CR> |
+				\ endif
+'''
+
+[[plugins]]
+repo = 'tpope/vim-git'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+hook_add = '''
+	nmap <silent>sa <Plug>(operator-surround-append)
+	nmap <silent>sd <Plug>(operator-surround-delete)
+	nmap <silent>sr <Plug>(operator-surround-replace)
+'''
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'tpope/vim-ragtag'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+mappings = '.'
+
+[[plugins]]
+repo = 'mbbill/undotree'
+hook_add  = '''
+	nnoremap <silent> <F5> :UndotreeToggle<CR>
+	:imap <F5> <C-o>:UndotreeToggle<CR>
+'''
+hook_source  = 'source ~/.vim/rc/plugins/undotree.rc.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'junkblocker/unite-tasklist'
+hook_add  = '''
+	let g:unite_tasklist_ignorecase = 1
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+	filetype plugin indent on
+	let g:tagbar_singleclick = 1
+	let g:tagbar_sort = 0
+	nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
+	:imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'majutsushi/tagbar'
+hook_add = '''
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme="dark"
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'mtscout6/vim-tagbar-css'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add  = '''
+	let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler', 'vimshell', 'Help', 'vimfiler:explorer', 'startify']
+'''
+
+[[plugins]]
+repo = 'kopischke/unite-spell-suggest'
+
+[[plugins]]
+repo = 'gregsexton/MatchTag'
+
+[[plugins]]
+repo = 'vim-scripts/delimitMate.vim'
+
+[[plugins]]
+repo = 'xolox/vim-misc'
+
+[[plugins]]
+repo = 'xolox/vim-easytags'
+depends = 'xolox/vim-misc'
+hook_add  =  '''
+	let g:easytags_dynamic_files = 1
+	let g:easytags_autorecurse = 1
+	let g:easytags_async = 1
+	let g:easytags_auto_highlight = 0
+	let g:easytags_updatetime_warn = 0
+'''
+
+[[plugins]]
+repo = 'pbrisbin/vim-mkdir'
+
+[[plugins]]
+repo = 'jmcantrell/vim-diffchanges'
+hook_add  =  '''
+	nnoremap <silent> <F12> :DiffChangesDiffToggle<CR>
+	inoremap <silent> <F12> <C-o>:<C-u>DiffChangesDiffToggle<CR>
+'''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'zhaocai/DirDiff.vim'
+
+[[plugins]]
+repo = 'edkolev/promptline.vim'
+
+[[plugins]]
+repo = 'ap/vim-css-color'
+
+[[plugins]]
+repo = 'vim-scripts/bufkill.vim'
+
+[[plugins]]
+repo = 'mhinz/vim-signify'
+hook_add  = '''
+	let g:signify_vcs_list = [ 'svn', 'hg', 'bzr' ]
+	let signify_update_on_focusgained = 1
+	let g:signify_sign_add               = '+'
+	let g:signify_sign_delete            = '_'
+	let g:signify_sign_delete_first_line = '‾'
+	let g:signify_sign_change            = '~'
+	let g:signify_sign_changedelete      = '~_'
+'''
+
+[[plugins]]
+repo = 'int3/vim-extradite'
+depends = 'tpope/vim-fugitive'
+hook_add  =  '''
+	nnoremap <silent> <F6> :Extradite!<CR>
+	:inoremap <F6> <C-o>:<C-u>Extradite!<CR>
+'''
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add  =  '''
+	let g:rooter_silent_chdir = 1
+'''

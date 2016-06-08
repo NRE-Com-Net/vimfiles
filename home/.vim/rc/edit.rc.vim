@@ -46,16 +46,6 @@ set matchpairs+=<:>
 " Display another buffer when current buffer isn't saved.
 set hidden
 
-if has('nvim')
-	set nospell
-else
-	"turn on spell checking
-	set spell
-endif
-
-" Auto reload if file is changed.
-"set autoread
-
 " Ignore case on insert completion.
 set infercase
 
@@ -83,10 +73,6 @@ set grepprg=grep\ -inH
 
 " Exclude = from isfilename.
 set isfname-==
-
-" Reload .vimrc automatically.
-autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,neobundle.toml
-			\ NeoBundleClearCache | source $MYVIMRC | redraw
 
 " Keymapping timeout.
 set timeout timeoutlen=3000 ttimeoutlen=100
