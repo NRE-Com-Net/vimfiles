@@ -14,7 +14,7 @@ if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
 
-function! s:source_rc(path, ...) abort "{{{
+function! g:Source_rc(path, ...) abort "{{{
 	let use_global = get(a:000, 0, !has('vim_starting'))
 	let abspath = resolve(expand('~/.vim/rc/' . a:path))
 	if !use_global
@@ -43,10 +43,10 @@ augroup MyAutoCmd
 augroup END
 
 if has('vim_starting')
-	call s:source_rc('init.rc.vim')
+	call g:Source_rc('init.rc.vim')
 endif
 
-call s:source_rc('dein.rc.vim')
+call g:Source_rc('dein.rc.vim')
 
 if !has('vim_starting')
 	call dein#call_hook('source')
@@ -59,7 +59,7 @@ endif
 " Encoding:
 "
 
-call s:source_rc('encoding.rc.vim')
+call g:Source_rc('encoding.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " Search:
@@ -82,42 +82,42 @@ set wrapscan
 " Edit:
 "
 
-call s:source_rc('edit.rc.vim')
+call g:Source_rc('edit.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " View:
 "
 
-call s:source_rc('view.rc.vim')
+call g:Source_rc('view.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " Mappings:
 "
 
-call s:source_rc('mappings.rc.vim')
+call g:Source_rc('mappings.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " Platform:
 "
 
 if has('nvim')
-	call s:source_rc('neovim.rc.vim')
+	call g:Source_rc('neovim.rc.vim')
 endif
 
 if IsWindows()
-	call s:source_rc('windows.rc.vim')
+	call g:Source_rc('windows.rc.vim')
 else
-	call s:source_rc('unix.rc.vim')
+	call g:Source_rc('unix.rc.vim')
 endif
 
 if !has('nvim') && has('gui_running')
-	call s:source_rc('gui.rc.vim')
+	call g:Source_rc('gui.rc.vim')
 endif
 
 "--------------------------------------------------------------------------------------------------
 " Commands:
 "
-call s:source_rc('commands.rc.vim')
+call g:Source_rc('commands.rc.vim')
 
 "--------------------------------------------------------------------------------------------------
 " Others:

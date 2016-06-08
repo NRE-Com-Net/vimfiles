@@ -20,8 +20,8 @@ depends = 'context_filetype.vim'
 if = "has('lua')"
 on_event = 'InsertEnter'
 hook_source = '''
-  let g:neocomplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/neocomplete.rc.vim
+	let g:neocomplete#enable_at_startup = 1
+	source ~/.vim/rc/plugins/neocomplete.rc.vim
 '''
 
 [[plugins]]
@@ -36,6 +36,28 @@ repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
+	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
+	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
+	nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
+	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer_tab -toggle -start-insert<CR>
+	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
+	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
+	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
+	nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
+	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+	nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+	" Execute help.
+	nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
+	" Execute help by cursor keyword.
+	nnoremap <silent> g<C-h>	:<C-u>UniteWithCursorWord help<CR>
+	" Search.
+	nnoremap <silent><expr> / ":\<C-u>Unite -buffer-name=search line:all -start-insert -no-quit\<CR>"
+	nnoremap <expr> g/  <SID>smart_search_expr('g/',
+				\ :<C-u>Unite -buffer-name=search -start-insert line_migemo<CR>)
+	nnoremap <silent><expr> ? ":\<C-u>Unite -buffer-name=search%".bufnr('%')." -start-insert line:backward\<CR>"
+	nnoremap <silent><expr> * ":\<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:forward:wrap\<CR>"
+	cnoremap <expr><silent><C-g> (getcmdtype() == '/') ?
+				\ "\<ESC>:Unite -buffer-name=search line:forward:wrap -input=".getcmdline()."\<CR>" : "\<C-g>"
 '''
 
 [[plugins]]
@@ -49,13 +71,19 @@ repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = {n = '<Plug>'}
 on_if = "isdirectory(bufname('%'))"
-hook_add = 'nnoremap <silent>   [Space]v   :<C-u>VimFiler -invisible<CR>'
+hook_add  = '''
+	nnoremap <silent> <F2> :<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
+	:imap <silent> <F2> <C-o>:<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
+'''
 hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/vimshell.vim'
 on_map = {n = '<Plug>'}
-hook_add = 'nmap [Space]s  <Plug>(vimshell_switch)'
+hook_add = '''
+	nmap <C-@>  <Plug>(vimshell_switch)
+	nnoremap !  q:VimShellExecute<Space>
+'''
 hook_source = 'source ~/.vim/rc/plugins/vimshell.rc.vim'
 
 [[plugins]]
@@ -114,13 +142,15 @@ on_ft = ['unite', 'quickfix']
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
+hook_add = 'nmap <silent> <Leader>r <Plug>(quickrun)'
 
 [[plugins]]
 repo = 'thinca/vim-scouter'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
-unite_sources = 'ref'
+on_map = {n = '<Plug>'}
+hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
 
 [[plugins]]
 repo = 'thinca/vim-unite-history'
@@ -192,10 +222,6 @@ repo = 'godlygeek/csapprox'
 
 [[plugins]]
 repo = 'thinca/vim-guicolorscheme'
-
-[[plugins]]
-repo = 'matchit.zip'
-on_map = [['nxo', '%', 'g%']]
 
 [[plugins]]
 repo = 'jiangmiao/simple-javascript-indenter'
@@ -456,6 +482,9 @@ on_ft = 'python'
 [[plugins]]
 repo = 'spf13/PIV'
 on_ft = 'php'
+hook_add  = '''
+	let g:DisableAutoPHPFolding=1
+'''
 
 [[plugins]]
 repo = 'medihack/sh.vim'
@@ -480,3 +509,8 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'saltstack/salt-vim'
 on_ft = 'salt'
+
+[[plugins]]
+repo = 'Konfekt/FastFold'
+on_event = 'InsertEnter'
+hook_post_source = 'FastFoldUpdate'
