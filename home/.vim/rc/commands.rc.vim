@@ -20,14 +20,22 @@ function! CopyModeToggle()
 		setlocal nolist
 		setlocal nonumber
 		setlocal foldcolumn=0
+		if dein#is_sourced('vim-signify')
 			call sy#stop(b:sy.buffer)
+		endif
+		if dein#is_sourced('vim-gitgutter')
 			GitGutterSignsDisable
+		endif
 	else
 		setlocal foldcolumn=1
 		setlocal list
 		setlocal number
+		if dein#is_sourced('vim-signify')
 			call sy#start()
+		endif
+		if dein#is_sourced('vim-gitgutter')
 			GitGutterSignsEnable
+		endif
 	endif
 endfunction
 
@@ -39,4 +47,8 @@ au User fugitive
 			\ endif
 au BufReadPost fugitive://* set bufhidden=delete
 
+if dein#is_sourced('neosnippet.vim') "{{{
 	autocmd InsertLeave * NeoSnippetClearMarkers
+endif "}}}
+
+autocmd FileType vimfiler setlocal nonumber
