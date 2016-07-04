@@ -472,10 +472,6 @@ repo = 'vim-ruby/vim-ruby'
 on_ft = 'ruby'
 
 [[plugins]]
-repo = 'tejr/vim-tmux'
-on_ft = 'tmux'
-
-[[plugins]]
 repo = 'klen/python-mode'
 on_ft = 'python'
 
