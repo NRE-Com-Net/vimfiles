@@ -152,9 +152,6 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'zhaocai/DirDiff.vim'
 
 [[plugins]]
-repo = 'edkolev/promptline.vim'
-
-[[plugins]]
 repo = 'ap/vim-css-color'
 
 [[plugins]]

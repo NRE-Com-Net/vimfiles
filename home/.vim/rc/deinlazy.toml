@@ -33,7 +33,7 @@ hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
+depends = ['neomru.vim', 'tabpagebuffer.vim']
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
 	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
@@ -128,14 +128,6 @@ repo = 'vim-jp/vital.vim'
 repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
-repo = 'kana/vim-smartchr'
-on_event = 'InsertCharPre'
-hook_source = 'source ~/.vim/rc/plugins/smartchr.rc.vim'
-
-[[plugins]]
-repo = 'mattn/webapi-vim'
-
-[[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_ft = ['unite', 'quickfix']
 
@@ -161,11 +153,6 @@ on_map = '<Plug>'
 on_ft = 'ruby'
 
 [[plugins]]
-repo = 'basyura/J6uil.vim'
-depends = 'webapi-vim'
-hook_source = 'source ~/.vim/rc/plugins/J6uil.rc.vim'
-
-[[plugins]]
 repo = 'tsukkee/unite-tag'
 
 [[plugins]]
@@ -175,10 +162,6 @@ on_map = '<Plug>'
 [[plugins]]
 repo = 'tyru/eskk.vim'
 on_map = [['i', '<Plug>'], ['c', '<Plug>']]
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-on_map = '<Plug>'
 
 [[plugins]]
 repo = 'tyru/restart.vim'
@@ -325,21 +308,12 @@ repo = 'AndrewRadev/sideways.vim'
 on_map = [['ox', '<Plug>']]
 
 [[plugins]]
-repo = 'saihoooooooo/glowshi-ft.vim'
-on_map = '<Plug>'
-
-[[plugins]]
 repo = 'Rykka/riv.vim'
 on_ft = 'rst'
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = ['markdown', 'mkd']
-
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ['markdown', 'rst', 'mkd']
-depends = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'Kocha/vim-unite-tig'
@@ -379,10 +353,6 @@ repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'terryma/vim-expand-region'
-on_map = [['x', '<Plug>']]
-
-[[plugins]]
 repo = 'phildawes/racer'
 on_ft = 'rust'
 
@@ -413,15 +383,6 @@ on_ft = 'java'
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
 on_ft = 'haskell'
-
-[[plugins]]
-repo = 'lambdalisue/vim-findent'
-on_if = 1
-hook_add = '''
-  " Note: It is too slow.
-  " autocmd MyAutoCmd BufRead * Findent! --no-warnings
-  nnoremap <silent> [Space]i    :<C-u>Findent! --no-warnings<CR>
-'''
 
 [[plugins]]
 repo = 'ujihisa/unite-locate'
