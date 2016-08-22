@@ -11,7 +11,7 @@ endfun
 au BufReadPost * call AutojumpLastPosition()"
 
 function! FullyRedraw()
-	nohls
+	let @/ = ''
 	syntax sync fromstart
 endfunction
 

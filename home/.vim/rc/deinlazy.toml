@@ -34,8 +34,9 @@ hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = ['neomru.vim', 'tabpagebuffer.vim']
-hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
-hook_add = '''
+on_if = 1
+hook_source = '''
+	source ~/.vim/rc/plugins/unite.rc.vim
 	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
 	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
 	nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
