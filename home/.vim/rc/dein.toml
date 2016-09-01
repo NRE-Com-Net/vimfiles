@@ -55,9 +55,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-unimpaired'
-
-[[plugins]]
 repo = 'tpope/vim-ragtag'
 
 [[plugins]]

@@ -22,8 +22,8 @@ hook_source = '''
 	source ~/.vim/rc/plugins/unite.rc.vim
 	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
 	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
-	nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
-	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer_tab -toggle -start-insert<CR>
+	nnoremap <silent> <F4> :<C-u>Unite buffer -toggle -start-insert<CR>
+	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle -start-insert<CR>
 	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
 	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
 	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
