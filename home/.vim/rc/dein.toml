@@ -197,3 +197,5 @@ hook_add  =  '''
 	let g:rooter_silent_chdir = 1
 '''
 
+[[plugins]]
+repo = 'jreybert/file-line'
