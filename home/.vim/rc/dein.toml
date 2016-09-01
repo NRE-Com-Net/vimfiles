@@ -1,6 +1,16 @@
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'thinca/vim-unite-history'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-filetype'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
@@ -12,6 +22,9 @@ hook_add = '''
 	set background=dark
 	colorscheme hybrid
 '''
+
+[[plugins]]
+repo = 'Shougo/unite-sudo'
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
@@ -91,7 +104,7 @@ repo = 'vim-airline/vim-airline'
 depends = 'majutsushi/tagbar'
 hook_add = '''
 	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline#extensions#tabline#show_buffers = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme="dark"
 '''
@@ -133,6 +146,7 @@ hook_add  =  '''
 	let g:easytags_async = 1
 	let g:easytags_auto_highlight = 0
 	let g:easytags_updatetime_warn = 0
+	nnoremap <silent> gt "zyiw:exe "tag ".@z.""<CR>
 '''
 
 [[plugins]]
@@ -182,3 +196,4 @@ repo = 'airblade/vim-rooter'
 hook_add  =  '''
 	let g:rooter_silent_chdir = 1
 '''
+

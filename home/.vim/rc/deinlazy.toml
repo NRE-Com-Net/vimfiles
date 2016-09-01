@@ -15,6 +15,53 @@ on_if = 1
 on_source = 'unite.vim'
 
 [[plugins]]
+repo = 'Shougo/unite.vim'
+depends = ['neomru.vim', 'tabpagebuffer.vim']
+on_event = 'VimEnter'
+hook_source = '''
+	source ~/.vim/rc/plugins/unite.rc.vim
+	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
+	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
+	nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
+	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer_tab -toggle -start-insert<CR>
+	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
+	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
+	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
+	nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
+	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+	nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+
+	nnoremap <silent> [Space]ft
+		\ :<C-u>Unite -start-insert filetype filetype/new<CR>
+
+	" Tag jump.
+	nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
+		\ ":\<C-u>UniteWithCursorWord -buffer-name=tag -immediately
+		\  tag tag/include\<CR>"
+	nnoremap <silent><expr> tp  &filetype == 'help' ?
+		\ ":\<C-u>pop\<CR>" : ":\<C-u>Unite jump\<CR>"
+
+	" Execute help.
+	nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
+
+	" Search.
+	nnoremap <silent> /
+		\ :<C-u>Unite -buffer-name=search%`bufnr('%')`
+		\ -start-insert line:forward:wrap<CR>
+	nnoremap <silent> *
+		\ :<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')."
+		\ line:forward:wrap<CR>
+	nnoremap <silent> ?
+		\ :<C-u>Unite -buffer-name=search%".bufnr('%')."
+		\ -start-insert line:backward<CR>
+	nnoremap [Alt]/       /
+	nnoremap [Alt]?       ?
+	nnoremap <silent> n
+		\ :<C-u>UniteResume search%`bufnr('%')`
+		\  -no-start-insert -force-redraw<CR>
+'''
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 if = "has('lua')"
@@ -30,36 +77,6 @@ depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'tabpagebuffer.vim']
-on_if = 1
-hook_source = '''
-	source ~/.vim/rc/plugins/unite.rc.vim
-	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
-	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
-	nnoremap <silent> <F4> :<C-u>Unite buffer_tab -toggle -start-insert<CR>
-	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer_tab -toggle -start-insert<CR>
-	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
-	nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
-	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-	nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-	" Execute help.
-	nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
-	" Execute help by cursor keyword.
-	nnoremap <silent> g<C-h>	:<C-u>UniteWithCursorWord help<CR>
-	" Search.
-	nnoremap <silent><expr> / ":\<C-u>Unite -buffer-name=search line:all -start-insert -no-quit\<CR>"
-	nnoremap <expr> g/  <SID>smart_search_expr('g/',
-				\ :<C-u>Unite -buffer-name=search -start-insert line_migemo<CR>)
-	nnoremap <silent><expr> ? ":\<C-u>Unite -buffer-name=search%".bufnr('%')." -start-insert line:backward\<CR>"
-	nnoremap <silent><expr> * ":\<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')." line:forward:wrap\<CR>"
-	cnoremap <expr><silent><C-g> (getcmdtype() == '/') ?
-				\ "\<ESC>:Unite -buffer-name=search line:forward:wrap -input=".getcmdline()."\<CR>" : "\<C-g>"
-'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -86,14 +103,6 @@ hook_add = '''
 	nnoremap !  q:VimShellExecute<Space>
 '''
 hook_source = 'source ~/.vim/rc/plugins/vimshell.rc.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-sudo'
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
@@ -146,9 +155,6 @@ on_map = {n = '<Plug>'}
 hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
 
 [[plugins]]
-repo = 'thinca/vim-unite-history'
-
-[[plugins]]
 repo = 'vim-ruby/vim-ruby'
 on_map = '<Plug>'
 on_ft = 'ruby'
@@ -189,9 +195,6 @@ repo = 'ujihisa/unite-colorscheme'
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filetype'
 
 [[plugins]]
 repo = 'kana/vim-tabpagecd'
