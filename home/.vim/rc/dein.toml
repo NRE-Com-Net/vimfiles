@@ -142,7 +142,6 @@ hook_add  =  '''
 	let g:easytags_async = 1
 	let g:easytags_auto_highlight = 0
 	let g:easytags_updatetime_warn = 0
-	nnoremap <silent> gt "zyiw:exe "tag ".@z.""<CR>
 
 	function! UpdateProjectTags()
 		let g:easytags_autorecurse = 1
