@@ -58,7 +58,7 @@ set nofoldenable
 " set foldmethod=expr
 set foldmethod=syntax
 " Show folding level.
-set foldcolumn=1
+set foldcolumn=3
 set fillchars=vert:\|
 
 if exists('*FoldCCtext')

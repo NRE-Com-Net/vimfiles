@@ -27,7 +27,7 @@ function! CopyModeToggle()
 			GitGutterSignsDisable
 		endif
 	else
-		setlocal foldcolumn=1
+		setlocal foldcolumn=3
 		setlocal list
 		setlocal number
 		if dein#is_sourced('vim-signify')

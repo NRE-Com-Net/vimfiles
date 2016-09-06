@@ -73,10 +73,7 @@ hook_source  = 'source ~/.vim/rc/plugins/undotree.rc.vim'
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'tpope/vim-commentary'
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
 repo = 'godlygeek/tabular'
@@ -206,3 +203,6 @@ hook_add  =  '''
 
 [[plugins]]
 repo = 'jreybert/file-line'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
