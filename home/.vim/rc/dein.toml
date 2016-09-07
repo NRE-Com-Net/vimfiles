@@ -71,6 +71,9 @@ repo = 'tpope/vim-repeat'
 mappings = '.'
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'mbbill/undotree'
 hook_add  = '''
 	nnoremap <silent> <F5> :UndotreeToggle<CR>
@@ -120,16 +123,6 @@ hook_add  = '''
 
 [[plugins]]
 repo = 'gregsexton/MatchTag'
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
-hook_add = '''
-	let g:airline#extensions#syntastic#enabled = 1
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-'''
 
 [[plugins]]
 repo = 'vim-scripts/delimitMate.vim'
