@@ -126,6 +126,9 @@ repo = 'kopischke/unite-spell-suggest'
 repo = 'gregsexton/MatchTag'
 
 [[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
 repo = 'vim-scripts/delimitMate.vim'
 
 [[plugins]]
