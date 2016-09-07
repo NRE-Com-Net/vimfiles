@@ -277,11 +277,6 @@ hook_add = '''
   let g:gista#github_user = 'NemesisRE'
   let g:gista#directory = expand('$CACHE/gista')
 '''
-
-[[plugins]]
-repo = 'shawncplus/phpcomplete.vim'
-on_ft = 'php'
-
 [[plugins]]
 repo = 'ujihisa/unite-locate'
 on_source = 'unite.vim'
@@ -290,13 +285,6 @@ unite_sources = 'locate'
 [[plugins]]
 repo = 'chrisbra/csv.vim'
 on_ft = 'csv'
-
-[[plugins]]
-repo = 'spf13/PIV'
-on_ft = 'php'
-hook_add  = '''
-	let g:DisableAutoPHPFolding=1
-'''
 
 [[plugins]]
 repo = 'kovetskiy/vim-bash'
