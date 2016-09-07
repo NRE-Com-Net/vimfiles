@@ -15,6 +15,25 @@ on_if = 1
 on_source = 'unite.vim'
 
 [[plugins]]
+repo = 'thinca/vim-unite-history'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-filetype'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-sudo'
+on_source = ['unite.vim', 'vimfiler.vim']
+
+[[plugins]]
+repo = 'junkblocker/unite-tasklist'
+on_source = 'unite.vim'
+hook_add  = '''
+	let g:unite_tasklist_ignorecase = 1
+'''
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 depends = ['neomru.vim', 'tabpagebuffer.vim']
 on_if = 1
@@ -79,10 +98,14 @@ on_ft = 'snippet'
 hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-build'
+on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
@@ -114,7 +137,6 @@ on_ft = 'all'
 
 [[plugins]]
 repo = 'Shougo/unite-session'
-depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
@@ -138,6 +160,7 @@ repo = 'vim-jp/vital.vim'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css', 'html', 'php']
 
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
@@ -149,41 +172,21 @@ on_map = '<Plug>'
 hook_add = 'nmap <silent> <Leader>r <Plug>(quickrun)'
 
 [[plugins]]
-repo = 'thinca/vim-scouter'
-
-[[plugins]]
 repo = 'thinca/vim-ref'
 on_map = {n = '<Plug>'}
 hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
 
 [[plugins]]
 repo = 'tsukkee/unite-tag'
-depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = '<Plug>'
+repo = 'kopischke/unite-spell-suggest'
+on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'tyru/eskk.vim'
-on_map = [['i', '<Plug>'], ['c', '<Plug>']]
-
-[[plugins]]
-repo = 'tyru/restart.vim'
-gui = 1
-commands = 'Restart'
-
-[[plugins]]
-repo = 'tyru/winmove.vim'
-on_map = '<Plug>'
-gui = 1
-augroup = 'winmove'
-
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-on_ft = 'haskell'
-external_commands = 'ghc-mod'
+repo = 'mtscout6/vim-tagbar-css'
+on_source = 'tagbar'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
@@ -191,21 +194,15 @@ on_source = ['neocomplete.vim', 'deoplete.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
-depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
-depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'kana/vim-tabpagecd'
 unite_sources = 'tab'
-
-[[plugins]]
-repo = 'rhysd/accelerated-jk'
-on_map = '<Plug>'
 
 [[plugins]]
 repo = 'godlygeek/csapprox'
@@ -216,19 +213,6 @@ repo = 'thinca/vim-guicolorscheme'
 [[plugins]]
 repo = 'bkad/CamelCaseMotion'
 on_map = ['<Plug>CamelCaseMotion_w', '<Plug>CamelCaseMotion_b']
-
-[[plugins]]
-repo = 'aharisu/vim-gdev'
-on_ft = 'scheme'
-
-[[plugins]]
-repo = 't9md/vim-choosewin'
-on_map = '<Plug>'
-
-[[plugins]]
-repo = 'lambdalisue/vim-fullscreen'
-gui = 1
-on_map = '<Plug>'
 
 [[plugins]]
 repo = 'syngan/vim-vimlint'
@@ -266,10 +250,6 @@ repo = 'AndrewRadev/sideways.vim'
 on_map = [['ox', '<Plug>']]
 
 [[plugins]]
-repo = 'thinca/vim-themis'
-on_ft = 'vim'
-
-[[plugins]]
 repo = 'lambdalisue/vim-gita'
 commands = 'Gita'
 
@@ -287,7 +267,6 @@ on_ft = 'php'
 
 [[plugins]]
 repo = 'ujihisa/unite-locate'
-depends = 'unite.vim'
 on_source = 'unite.vim'
 unite_sources = 'locate'
 
@@ -305,6 +284,13 @@ hook_add  = '''
 [[plugins]]
 repo = 'kovetskiy/vim-bash'
 on_ft = 'sh'
+
+[[plugins]]
+repo = 'medihack/sh.vim'
+on_ft = 'sh'
+hook_add = '''
+	let g:sh_indent_case_labels=1
+'''
 
 [[plugins]]
 repo = 'vim-scripts/SQLComplete.vim'

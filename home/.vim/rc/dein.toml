@@ -6,16 +6,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'thinca/vim-unite-history'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filetype'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
 repo = 'scwood/vim-hybrid'
 hook_add = '''
 	syntax on
@@ -24,11 +14,30 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/unite-sudo'
+repo = 'mhinz/vim-startify'
+hook_add = '''
+	setlocal nospell
+	let g:startify_custom_header = [
+		\ '						Keybindings',
+		\ '	Function Keys (Work in normal- and inputmode):',
+		\ '	F1		=> Menu					F2		=> Filebrowser',
+		\ '	F3		=> Tagbar				F4		=> Bufferlist',
+		\ '	F5		=> Undotree				F6		=> Extradite',
+		\ '	F7		=> Undefined			F8		=> NoSigns',
+		\ '	F9		=> TaskList				F10		=> Register/Yankhistory',
+		\ '	F11		=> SpellToggle			F12		=> UnsavedDiff',
+		\ '',
+		\ '	Other Keys:',
+		\ '	,		=> <Leader>				<C-p>	=> Unite FuzzyFileFinder',
+		\ '	<C-f>	=> Unite Grep			<C-h>	=> Unite Search Help',
+		\ '	<C-e>	=> Fill snippet',
+		\ '',
+		\ '',
+		\ ]
+'''
 
 [[plugins]]
-repo = 'mhinz/vim-startify'
-hook_source = 'source ~/.vim/rc/plugins/vim-startify.vim'
+repo = 'haya14busa/dein-command.vim'
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
@@ -79,12 +88,6 @@ repo = 'tomtom/tcomment_vim'
 repo = 'godlygeek/tabular'
 
 [[plugins]]
-repo = 'junkblocker/unite-tasklist'
-hook_add  = '''
-	let g:unite_tasklist_ignorecase = 1
-'''
-
-[[plugins]]
 repo = 'majutsushi/tagbar'
 hook_add = '''
 	let g:tagbar_singleclick = 1
@@ -95,7 +98,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = 'majutsushi/tagbar'
 hook_add = '''
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#show_buffers = 1
@@ -111,22 +113,23 @@ depends = 'vim-airline/vim-airline'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'mtscout6/vim-tagbar-css'
-
-[[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 hook_add  = '''
 	let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler', 'vimshell', 'Help', 'vimfiler:explorer', 'startify']
 '''
 
 [[plugins]]
-repo = 'kopischke/unite-spell-suggest'
-
-[[plugins]]
 repo = 'gregsexton/MatchTag'
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
+hook_add = '''
+	let g:airline#extensions#syntastic#enabled = 1
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+'''
 
 [[plugins]]
 repo = 'vim-scripts/delimitMate.vim'
@@ -208,3 +211,6 @@ repo = 'jreybert/file-line'
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'vitalk/vim-shebang'
