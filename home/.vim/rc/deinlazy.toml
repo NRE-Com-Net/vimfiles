@@ -27,10 +27,19 @@ repo = 'Shougo/unite-sudo'
 on_source = ['unite.vim', 'vimfiler.vim']
 
 [[plugins]]
-repo = 'junkblocker/unite-tasklist'
+repo = 'zyphrus/unite-tasklist'
 on_source = 'unite.vim'
 hook_add  = '''
 	let g:unite_tasklist_ignorecase = 1
+	let g:unite_tasklist_tokens = [
+		\ 'CAUTION',
+		\ 'FIXME',
+		\ 'HACK',
+		\ 'PATCH',
+		\ 'TBD',
+		\ 'TODO',
+		\ 'XXX',
+		\]
 '''
 
 [[plugins]]
