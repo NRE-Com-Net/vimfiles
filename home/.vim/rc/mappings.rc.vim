@@ -75,8 +75,8 @@ command! -bang Wq wq<bang>
 command! -bang WQ wq<bang>
 nnoremap <silent> <F8> :call CopyModeToggle()<CR>
 :inoremap <F8> <C-o>:<C-u>call CopyModeToggle()<CR>
-nnoremap <silent> <F11> :setlocal spell! spell?<CR>
-:inoremap <F11> <C-o>:<C-u>setlocal spell! spell?<CR>
+nnoremap <silent> <C-F11> :setlocal spell! spell?<CR>
+:inoremap <C-F11> <C-o>:<C-u>setlocal spell! spell?<CR>
 " Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
 " Previous Tab

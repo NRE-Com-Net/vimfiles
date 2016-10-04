@@ -207,3 +207,11 @@ repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'vitalk/vim-shebang'
+
+[[plugins]]
+repo = 'vimwiki/vimwiki'
+hook_add = '''
+	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
+	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
+	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
+'''

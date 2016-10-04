@@ -67,8 +67,10 @@ hook_source = '''
 	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
 	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
 	nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
-	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+	nnoremap <silent> <F11> :<C-u>Unite -toggle spell_suggest<CR>
+	inoremap <silent> <F11> <C-o>:<C-u>Unite -toggle spell_suggest<CR>
 	nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
 
 	nnoremap <silent> [Space]ft
 		\ :<C-u>Unite -start-insert filetype filetype/new<CR>
@@ -199,6 +201,7 @@ on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'kopischke/unite-spell-suggest'
+rev = '3349841'
 on_source = 'unite.vim'
 
 [[plugins]]
