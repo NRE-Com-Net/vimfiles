@@ -27,6 +27,8 @@ set linebreak
 set showbreak=>\
 set breakat=\ \	;:,!?
 
+set cursorline
+
 " Do not display greetings message at the time of Vim start.
 set shortmess=aTI
 
