@@ -201,7 +201,6 @@ on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'kopischke/unite-spell-suggest'
-rev = '3349841'
 on_source = 'unite.vim'
 
 [[plugins]]
