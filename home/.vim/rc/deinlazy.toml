@@ -292,6 +292,9 @@ unite_sources = 'locate'
 [[plugins]]
 repo = 'chrisbra/csv.vim'
 on_ft = 'csv'
+hook_add = '''
+	filetype plugin indent on
+'''
 
 [[plugins]]
 repo = 'spf13/PIV'
