@@ -215,4 +215,5 @@ hook_add = '''
 	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
 	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
 	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
+	let g:vimwiki_list = [{'path': '~/.vim/vimwiki/wiki/'}]
 '''
