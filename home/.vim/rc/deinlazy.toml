@@ -333,3 +333,6 @@ on_ft = 'salt'
 [[plugins]]
 repo = 'klen/python-mode'
 on_ft = 'python'
+hook_add = '''
+	let g:pymode_lint_ignore = "E501,W"
+'''
