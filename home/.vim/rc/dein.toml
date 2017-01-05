@@ -152,6 +152,10 @@ hook_add  =  '''
 '''
 
 [[plugins]]
+repo = 'valloric/youcompleteme'
+build = 'python install.py'
+
+[[plugins]]
 repo = 'pbrisbin/vim-mkdir'
 
 [[plugins]]
