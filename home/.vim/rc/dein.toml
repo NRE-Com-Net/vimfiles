@@ -116,9 +116,9 @@ depends = 'vim-airline/vim-airline'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
+repo = 'ntpeters/vim-better-whitespace'
 hook_add  = '''
-	let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler', 'vimshell', 'Help', 'vimfiler:explorer', 'startify']
+	let g:better_whitespace_filetypes_blacklist = ['unite', 'qf', 'vimfiler', 'vimshell', 'help', 'vimfiler:explorer', 'startify', 'calendar']
 '''
 
 [[plugins]]
@@ -233,5 +233,26 @@ hook_add = '''
 	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
 	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
 	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
-	let g:vimwiki_list = [{'path': '~/.vim/vimwiki/wiki/'}]
+	let g:vimwiki_list = [{'path': '~/.vim/vimwiki/wiki/', 'auto_toc': 1}]
 '''
+
+[[plugins]]
+repo = 'mattn/calendar-vim'
+hook_add = '''
+	:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+	function! ToggleCalendar()
+		execute ":Calendar"
+		if exists("g:calendar_open")
+			if g:calendar_open == 1
+				execute "q"
+				unlet g:calendar_open
+			else
+				g:calendar_open = 1
+			end
+		else
+			let g:calendar_open = 1
+		end
+	endfunction
+	:autocmd FileType vimwiki nnoremap <silent><Leader>wc :<C-u>call ToggleCalendar()<CR>
+'''
+
