@@ -17,23 +17,27 @@ hook_add = '''
 repo = 'mhinz/vim-startify'
 hook_add = '''
 	setlocal nospell
+	hi StartifyHeader ctermfg=221 guifg=#f0c674 cterm=bold
 	let g:startify_custom_header = [
 		\ '						Keybindings',
 		\ '	Function Keys (Work in normal- and inputmode):',
-		\ '	F1		=> Menu					F2		=> Filebrowser',
-		\ '	F3		=> Tagbar				F4		=> Bufferlist',
-		\ '	F5		=> Undotree				F6		=> Extradite',
-		\ '	F7		=> Undefined			F8		=> NoSigns',
-		\ '	F9		=> TaskList				F10		=> Register/Yankhistory',
-		\ '	F11		=> SpellToggle			F12		=> UnsavedDiff',
+		\ '	<F1>	=> Startify				<F2>	=> Filebrowser',
+		\ '	<F3>	=> Tagbar				<F4>	=> Bufferlist',
+		\ '	<F5>	=> Undotree				<F6>	=> Extradite',
+		\ '	<F7>	=> NoSigns				<F8>	=> VimWikiIndex',
+		\ '									<C-F8>	=> VimwikiDiaryIndex',
+		\ '	<F9>	=> TaskList				<F10>	=> Register/Yankhistory',
+		\ '	<F11>	=> SpellToggle			<F12>	=> UnsavedDiff',
+		\ '	<C-F11> => Unite Spell Suggest',
 		\ '',
 		\ '	Other Keys:',
 		\ '	,		=> <Leader>				<C-p>	=> Unite FuzzyFileFinder',
 		\ '	<C-f>	=> Unite Grep			<C-h>	=> Unite Search Help',
-		\ '	<C-e>	=> Fill snippet',
 		\ '',
 		\ '',
 		\ ]
+	nnoremap <silent> <F1> :<C-u>Startify<CR>
+	inoremap <silent> <F1> <C-o>:<C-u>Startify<CR>
 '''
 
 [[plugins]]
@@ -230,6 +234,8 @@ repo = 'vitalk/vim-shebang'
 [[plugins]]
 repo = 'vimwiki/vimwiki'
 hook_add = '''
+	nnoremap <silent> <F8> :<C-u>VimwikiIndex<CR>
+	inoremap <silent> <C-F8> <C-o>:<C-u>VimwikiDiaryIndex<CR>
 	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
 	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
 	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>

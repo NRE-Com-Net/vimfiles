@@ -59,8 +59,6 @@ depends = ['neomru.vim', 'tabpagebuffer.vim']
 on_event = 'VimEnter'
 hook_source = '''
 	source ~/.vim/rc/plugins/unite.rc.vim
-	nnoremap <silent> <F1> :<C-u>Unite -profile-name=menu menu:Main<CR>
-	inoremap <silent> <F1> <C-o>:<C-u>Unite -profile-name=menu menu:Main<CR>
 	nnoremap <silent> <F4> :<C-u>Unite buffer -toggle<CR>
 	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle<CR>
 	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
