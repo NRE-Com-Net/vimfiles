@@ -245,7 +245,6 @@ hook_add = '''
 [[plugins]]
 repo = 'mattn/calendar-vim'
 hook_add = '''
-	:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
 	function! ToggleCalendar()
 		execute ":Calendar"
 		if exists("g:calendar_open")
