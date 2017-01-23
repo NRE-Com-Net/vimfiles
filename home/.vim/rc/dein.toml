@@ -239,7 +239,21 @@ hook_add = '''
 	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
 	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
 	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
-	let g:vimwiki_list = [{'path': '~/.vim/vimwiki/wiki/', 'auto_toc': 1}]
+
+	let wiki_1 = {}
+	let wiki_1.path = '~/.vim/vimwiki/privat/'
+	let wiki_1.auto_toc = 1
+
+	let wiki_2 = {}
+	let wiki_2.path = '~/.vim/vimwiki/work/'
+	let wiki_2.auto_toc = 1
+
+	let g:vimwiki_nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'bash': 'sh'}
+	let g:vimwiki_list = [wiki_1, wiki_2]
+'''
+hook_source = '''
+	autocmd BufReadPre *.wiki silent exec "!git pull -q" | redraw!
+	autocmd BufWritePost *.wiki silent exec "!git add --all ;git commit -q -m 'Auto commit.';git push -q" | redraw!
 '''
 
 [[plugins]]
