@@ -21,7 +21,7 @@ function! CopyModeToggle()
 		setlocal nonumber
 		setlocal foldcolumn=0
 		if dein#is_sourced('vim-signify')
-			call sy#stop(b:sy.buffer)
+			call sy#stop(bufnr('%'))
 		endif
 		if dein#is_sourced('vim-gitgutter')
 			GitGutterSignsDisable
