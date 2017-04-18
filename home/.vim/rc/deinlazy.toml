@@ -112,6 +112,7 @@ on_if = "isdirectory(bufname('%'))"
 hook_add  = '''
 	nnoremap <silent> <F2> :<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
 	:imap <silent> <F2> <C-o>:<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
+	autocmd FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l)
 '''
 hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 
