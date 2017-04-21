@@ -13,7 +13,7 @@ function! IsMac() abort
       \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
 
-set tags=./.tags;,~/.vimtags
+set tags=./.tags;,$CACHE/.vimtags
 
 " Use English interface.
 language message C
