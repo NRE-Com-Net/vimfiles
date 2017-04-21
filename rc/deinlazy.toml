@@ -58,7 +58,7 @@ repo = 'Shougo/unite.vim'
 depends = ['neomru.vim', 'tabpagebuffer.vim']
 on_event = 'VimEnter'
 hook_source = '''
-	source ~/.vim/rc/plugins/unite.rc.vim
+	source $RC_PATH/plugins/unite.rc.vim
 	nnoremap <silent> <F4> :<C-u>Unite buffer -toggle<CR>
 	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle<CR>
 	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
@@ -107,23 +107,14 @@ on_source = 'unite.vim'
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
+on_source = 'unite.vim'
 on_map = {n = '<Plug>'}
-on_if = "isdirectory(bufname('%'))"
 hook_add  = '''
 	nnoremap <silent> <F2> :<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
 	:imap <silent> <F2> <C-o>:<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
 	autocmd FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l)
 '''
-hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
-
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-on_map = {n = '<Plug>'}
-hook_add = '''
-	nmap <C-@>  <Plug>(vimshell_switch)
-	nnoremap !  q:VimShellExecute<Space>
-'''
-hook_source = 'source ~/.vim/rc/plugins/vimshell.rc.vim'
+hook_source = 'source $RC_PATH/plugins/vimfiler.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
@@ -146,14 +137,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'ujihisa/vimshell-ssh'
-on_ft = 'vimshell'
-
-[[plugins]]
-repo = 'yomi322/vim-gitcomplete'
-on_ft = 'vimshell'
-
-[[plugins]]
 repo = 'vim-jp/vital.vim'
 
 [[plugins]]
@@ -172,7 +155,7 @@ hook_add = 'nmap <silent> <Leader>r <Plug>(quickrun)'
 [[plugins]]
 repo = 'thinca/vim-ref'
 on_map = {n = '<Plug>'}
-hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
+hook_source = 'source $RC_PATH/plugins/ref.rc.vim'
 
 [[plugins]]
 repo = 'tsukkee/unite-tag'
@@ -188,7 +171,7 @@ on_source = 'tagbar'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-on_source = ['neocomplete.vim', 'deoplete.nvim']
+on_source = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'

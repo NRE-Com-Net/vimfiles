@@ -1,3 +1,3 @@
 if 1
-	execute 'source' $HOME.'/.vim/rc/vimrc'
+	execute 'source' $HOME.'/.homesick/repos/vimfiles/rc/vimrc'
 endif

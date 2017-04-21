@@ -220,11 +220,6 @@ endif
 " let g:unite_source_rec_async_command =
 "       \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
-let g:unite_build_error_icon    = '~/.vim/signs/err.'
-      \ . (IsWindows() ? 'bmp' : 'png')
-let g:unite_build_warning_icon  = '~/.vim/signs/warn.'
-      \ . (IsWindows() ? 'bmp' : 'png')
-
 let g:unite_source_rec_max_cache_files = -1
 
 " My custom split action
@@ -239,8 +234,7 @@ endfunction
 call unite#custom_action('openable', 'context_split', s:my_split)
 unlet s:my_split
 
-nnoremap <silent> <Leader>st :NeoCompleteIncludeMakeCache<CR>
-            \ :UniteWithCursorWord -immediately -sync
+nnoremap <silent> <Leader>st :UniteWithCursorWord -immediately -sync
             \ -default-action=context_split tag/include<CR>
 nnoremap <silent> [Space]n  :UniteNext<CR>
 nnoremap <silent> [Space]p  :UnitePrevious<CR>

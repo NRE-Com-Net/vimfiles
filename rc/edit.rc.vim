@@ -81,11 +81,17 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set updatetime=1000
 
 " Set swap directory.
-set directory=~/.vim/swapfiles
+if !isdirectory(expand($CACHE . '/swapfiles'))
+	call mkdir(expand($CACHE . '/swapfiles'), 'p')
+endif
+set directory=$CACHE/swapfiles
 
 if v:version >= 703
 	set undofile
-	set undodir=~/.vim/undofiles
+	if !isdirectory(expand($CACHE . '/undofiles'))
+		call mkdir(expand($CACHE . '/undofiles'), 'p')
+	endif
+	set undodir=$CACHE/undofiles
 	set undolevels=1000
 	set undoreload=10000
 	if has('nvim')
@@ -93,7 +99,11 @@ if v:version >= 703
 	else
 		set viminfo='50,f1,<500,@100,h,%,/50,:100,n~/.vim/.viminfo
 	endif
-	set backupdir=~/.vim/backupfiles
+
+	if !isdirectory(expand($CACHE . '/backupfiles'))
+		call mkdir(expand($CACHE . '/backupfiles'), 'p')
+	endif
+	set backupdir=$CACHE/backupfiles
 	set colorcolumn=100
 endif
 

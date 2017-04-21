@@ -83,7 +83,7 @@ hook_add  = '''
 	nnoremap <silent> <F5> :UndotreeToggle<CR>
 	:imap <F5> <C-o>:UndotreeToggle<CR>
 '''
-hook_source  = 'source ~/.vim/rc/plugins/undotree.rc.vim'
+hook_source = 'source $RC_PATH/plugins/undotree.rc.vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -210,7 +210,7 @@ hook_add  = '''
 [[plugins]]
 repo = 'int3/vim-extradite'
 depends = 'tpope/vim-fugitive'
-hook_add  =  '''
+hook_source =  '''
 	nnoremap <silent> <F6> :Extradite!<CR>
 	:inoremap <F6> <C-o>:<C-u>Extradite!<CR>
 '''
@@ -241,11 +241,11 @@ hook_add = '''
 	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
 
 	let wiki_1 = {}
-	let wiki_1.path = '~/.vim/vimwiki/privat/'
+	let wiki_1.path = '~/.homesick/repos/vimwiki-privat/'
 	let wiki_1.auto_toc = 1
 
 	let wiki_2 = {}
-	let wiki_2.path = '~/.vim/vimwiki/work/'
+	let wiki_2.path = '~/.homesick/repos/vimwiki-1and1/'
 	let wiki_2.auto_toc = 1
 
 	let g:vimwiki_nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'bash': 'sh'}

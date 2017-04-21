@@ -3,7 +3,6 @@
 let g:dein#install_progress_type = 'title'
 let g:dein#install_message_type = 'none'
 let g:dein#enable_notification = 1
-let g:dein#notification_icon = '~/.vim/signs/warn.png'
 
 let s:path = expand('$CACHE/dein')
 if !dein#load_state(s:path)
@@ -11,14 +10,14 @@ if !dein#load_state(s:path)
 endif
 
 call dein#begin(s:path, [expand('<sfile>')]
-      \ + split(glob('~/.vim/rc/*.toml'), '\n'))
+      \ + split(glob($RC_PATH . '/*.toml'), '\n'))
 
-call dein#load_toml('~/.vim/rc/dein.toml', {'lazy': 0})
-call dein#load_toml('~/.vim/rc/deinlazy.toml', {'lazy' : 1})
+call dein#load_toml(expand($RC_PATH . '/dein.toml'), {'lazy': 0})
+call dein#load_toml(expand($RC_PATH . '/deinlazy.toml'), {'lazy' : 1})
 if has('nvim')
-  call dein#load_toml('~/.vim/rc/deineo.toml', {})
+  call dein#load_toml(expand($RC_PATH . '/deineo.toml'), {})
 endif
-call dein#load_toml('~/.vim/rc/deinft.toml')
+call dein#load_toml(expand($RC_PATH . '/deinft.toml'))
 
 let s:vimrc_local = findfile('vimrc_local.vim', '.;')
 if s:vimrc_local !=# ''
@@ -33,9 +32,6 @@ if s:vimrc_local !=# ''
   endif
 endif
 
-if dein#tap('deoplete.nvim') && has('nvim')
-  call dein#disable('neocomplete.vim')
-endif
 call dein#disable('neobundle.vim')
 call dein#disable('neopairs.vim')
 
