@@ -2,21 +2,11 @@
 " Key-mappings:
 "
 
-" Use <C-Space>.
-nmap <C-Space>  <C-@>
-cmap <C-Space>  <C-@>
-
-" Visual mode keymappings: "{{{
-" <TAB>: indent.
-xnoremap <TAB>  >
-" <S-TAB>: unindent.
-xnoremap <S-TAB>  <
-
-" Indent
-nnoremap > >>
-nnoremap < <<
-xnoremap > >gv
-xnoremap < <gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
   xnoremap <silent> y "*y:let [@+,@"]=[@*,@*]<CR>
@@ -24,9 +14,6 @@ endif
 "}}}
 
 
-" Insert mode keymappings: "{{{
-" <C-t>: insert tab.
-inoremap <C-t>  <C-v><TAB>
 " Enable undo <C-w> and <C-u>.
 inoremap <C-w>  <C-g>u<C-w>
 inoremap <C-u>  <C-g>u<C-u>
@@ -36,7 +23,7 @@ if has('gui_running')
 endif
 "}}}
 
-" Command-line mode keymappings:"{{{
+" Command-line mode key mappings:"{{{
 " <C-a>, A: move to head.
 cnoremap <C-a>          <Home>
 " <C-b>: previous char.
@@ -95,7 +82,7 @@ if has('gui_running')
 	inoremap <ESC> <ESC>
 endif
 
-" Command-line mode keymappings:"{{{
+" Command-line mode key mappings:"{{{
 " <C-a>, A: move to head.
 cnoremap <C-a>          <Home>
 " <C-b>: previous char.

@@ -43,14 +43,14 @@ hook_add  = '''
 '''
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'neomake/neomake'
+on_path = '.*'
 hook_add = '''
-	let g:airline#extensions#syntastic#enabled = 1
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_enable_signs = 1
-	let g:syntastic_check_on_wq = 0
+	autocmd! BufWritePost,BufEnter * Neomake
+	let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
+	let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
+	let g:neomake_php_php_args = ['-l', '%']
+	let g:neomake_php_php_append_file = 0
 '''
 
 [[plugins]]
@@ -59,45 +59,6 @@ depends = ['neomru.vim', 'tabpagebuffer.vim']
 on_event = 'VimEnter'
 hook_source = '''
 	source $RC_PATH/plugins/unite.rc.vim
-	nnoremap <silent> <F4> :<C-u>Unite buffer -toggle<CR>
-	inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle<CR>
-	nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-	inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
-	nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
-	nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
-	nnoremap <silent> <F11> :<C-u>Unite -toggle spell_suggest<CR>
-	inoremap <silent> <F11> <C-o>:<C-u>Unite -toggle spell_suggest<CR>
-	nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-	inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-
-	nnoremap <silent> [Space]ft
-		\ :<C-u>Unite -start-insert filetype filetype/new<CR>
-
-	" Tag jump.
-	nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
-		\ ":\<C-u>UniteWithCursorWord -buffer-name=tag -immediately
-		\  tag tag/include\<CR>"
-	nnoremap <silent><expr> tp  &filetype == 'help' ?
-		\ ":\<C-u>pop\<CR>" : ":\<C-u>Unite jump\<CR>"
-
-	" Execute help.
-	nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
-
-	" Search.
-	nnoremap <silent> /
-		\ :<C-u>Unite -buffer-name=search%`bufnr('%')`
-		\ -start-insert line:forward:wrap<CR>
-	nnoremap <silent> *
-		\ :<C-u>UniteWithCursorWord -buffer-name=search%".bufnr('%')."
-		\ line:forward:wrap<CR>
-	nnoremap <silent> ?
-		\ :<C-u>Unite -buffer-name=search%".bufnr('%')."
-		\ -start-insert line:backward<CR>
-	nnoremap [Alt]/       /
-	nnoremap [Alt]?       ?
-	nnoremap <silent> n
-		\ :<C-u>UniteResume search%`bufnr('%')`
-		\  -no-start-insert -force-redraw<CR>
 '''
 
 [[plugins]]

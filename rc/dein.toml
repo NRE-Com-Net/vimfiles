@@ -2,6 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'haya14busa/dein-command.vim'
+depends = 'Shougo/dein.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -15,33 +19,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
-hook_add = '''
-	setlocal nospell
-	hi StartifyHeader ctermfg=221 guifg=#f0c674 cterm=bold
-	let g:startify_custom_header = [
-		\ '						Keybindings',
-		\ '	Function Keys (Work in normal- and inputmode):',
-		\ '	<F1>	=> Startify				<F2>	=> Filebrowser',
-		\ '	<F3>	=> Tagbar				<F4>	=> Bufferlist',
-		\ '	<F5>	=> Undotree				<F6>	=> Extradite',
-		\ '	<F7>	=> NoSigns				<F8>	=> VimWikiIndex',
-		\ '									<C-F8>	=> VimwikiDiaryIndex',
-		\ '	<F9>	=> TaskList				<F10>	=> Register/Yankhistory',
-		\ '	<F11>	=> SpellToggle			<F12>	=> UnsavedDiff',
-		\ '	<C-F11> => Unite Spell Suggest',
-		\ '',
-		\ '	Other Keys:',
-		\ '	,		=> <Leader>				<C-p>	=> Unite FuzzyFileFinder',
-		\ '	<C-f>	=> Unite Grep			<C-h>	=> Unite Search Help',
-		\ '',
-		\ '',
-		\ ]
-	nnoremap <silent> <F1> :<C-u>Startify<CR>
-	inoremap <silent> <F1> <C-o>:<C-u>Startify<CR>
-'''
+hook_add = 'source $RC_PATH/plugins/vim-startify.rc.vim'
 
 [[plugins]]
-repo = 'haya14busa/dein-command.vim'
+repo = 'hecal3/vim-leader-guide'
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
@@ -80,10 +61,10 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'mbbill/undotree'
 hook_add  = '''
+	source $RC_PATH/plugins/undotree.rc.vim
 	nnoremap <silent> <F5> :UndotreeToggle<CR>
 	:imap <F5> <C-o>:UndotreeToggle<CR>
 '''
-hook_source = 'source $RC_PATH/plugins/undotree.rc.vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -105,12 +86,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-hook_add = '''
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#show_buffers = 1
-	let g:airline_powerline_fonts = 1
-	let g:airline_theme="dark"
-'''
+hook_add = 'source $RC_PATH/plugins/vim-airline.rc.vim'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
@@ -166,6 +142,17 @@ hook_add  =  '''
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+hook_add = '''
+	let g:UltiSnipsExpandTrigger = "<Nop>"
+	let g:UltiSnipsListSnippets = "<Nop>"
+	let g:UltiSnipsRemoveSelectModeMappings = 0
+	function! s:MyUltiExpand()
+		call UltiSnips#isExpandable()
+		return g:ulti_is_expandable
+	endfunction
+
+	inoremap <expr> <Tab> <SID>MyUltiExpand() ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
+'''
 
 [[plugins]]
 repo = 'honza/vim-snippets'
@@ -219,7 +206,7 @@ hook_source =  '''
 repo = 'airblade/vim-rooter'
 hook_add  =  '''
 	let g:rooter_silent_chdir = 1
-	let g:rooter_change_directory_for_non_project_files = 'current'
+	let g:rooter_change_directory_for_non_project_files = 'home'
 '''
 
 [[plugins]]
