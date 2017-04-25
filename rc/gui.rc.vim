@@ -30,11 +30,10 @@ if has('win32') || has('win64')
 
 elseif has('mac')
   " For Mac.
-  set guifont=Osaka－等幅:h14
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Book:h14
 else
   " For Linux.
-  "set guifontwide=VL\ Gothic\ 11
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Book\ 10
 endif"}}}
 
 "---------------------------------------------------------------------------

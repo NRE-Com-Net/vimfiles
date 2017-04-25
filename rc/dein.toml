@@ -79,7 +79,9 @@ repo = 'godlygeek/tabular'
 repo = 'majutsushi/tagbar'
 hook_add = '''
 	let g:tagbar_singleclick = 1
+	let g:tagbar_width = 50
 	let g:tagbar_sort = 0
+	let g:tagbar_compact = 1
 	nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
 	:imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
 '''

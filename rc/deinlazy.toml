@@ -71,8 +71,8 @@ depends = 'unite.vim'
 on_source = 'unite.vim'
 on_map = {n = '<Plug>'}
 hook_add  = '''
-	nnoremap <silent> <F2> :<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
-	:imap <silent> <F2> <C-o>:<C-u>VimFilerExplorer -parent -explorer-columns=type:size:time -toggle -no-safe -winwidth=50<CR>
+	nnoremap <silent> <F2> :<C-u>VimFiler<CR>
+	:imap <silent> <F2> <C-o>:<C-u>VimFiler<CR>
 	autocmd FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l)
 '''
 hook_source = 'source $RC_PATH/plugins/vimfiler.rc.vim'
@@ -258,4 +258,11 @@ repo = 'klen/python-mode'
 on_ft = 'python'
 hook_add = '''
 	let g:pymode_lint_ignore = "E501,W"
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+on_source = ['unite','vim-startify','vim-airline', 'vimfiler.vim']
+hook_add = '''
+	let g:webdevicons_enable_vimfiler = 0
 '''

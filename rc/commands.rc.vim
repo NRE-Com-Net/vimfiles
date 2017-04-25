@@ -46,9 +46,3 @@ au User fugitive
 			\   nnoremap <buffer> .. :edit %:h<CR> |
 			\ endif
 au BufReadPost fugitive://* set bufhidden=delete
-
-if dein#is_sourced('neosnippet.vim') "{{{
-	autocmd InsertLeave * NeoSnippetClearMarkers
-endif "}}}
-
-autocmd FileType vimfiler setlocal nonumber
