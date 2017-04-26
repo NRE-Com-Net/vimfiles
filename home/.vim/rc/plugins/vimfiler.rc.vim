@@ -29,7 +29,7 @@ call vimfiler#custom#profile('default', 'context', {
 			\ 'auto_expand': 1,
 			\ 'direction' : 'topleft',
 			\ 'columns' : 'devicons::size:time',
-			\ 'explorer_columns' : 'devicons:size:time',
+			\ 'explorer_columns' : 'gitstatus:devicons:size:time',
 			\ 'parent': 0,
 			\ 'status' : 1,
 			\ 'safe' : 0,

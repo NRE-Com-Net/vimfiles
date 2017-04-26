@@ -14,7 +14,7 @@ if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
 
-let $RC_PATH = expand('~/.homesick/repos/vimfiles/rc')
+let $RC_PATH = expand('~/.vim/rc')
 
 function! g:Source_rc(path, ...) abort "{{{
 	let use_global = get(a:000, 0, !has('vim_starting'))
