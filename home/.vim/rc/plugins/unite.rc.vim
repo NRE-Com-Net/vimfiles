@@ -2,16 +2,16 @@
 " unite.vim
 "
 
-nnoremap <silent> <F4> :<C-u>Unite buffer -toggle<CR>
-inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle<CR>
+nnoremap <silent> <F4> :<C-u>Unite buffer -toggle -no-start-insert<CR>
+inoremap <silent> <F4> <C-o>:<C-u>Unite buffer -toggle -no-start-insert<CR>
 nnoremap <silent> <F9> :<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
 inoremap <silent> <F9> <C-o>:<C-u>Unite tasklist -toggle -start-insert -vertical -winwidth=40<CR>
 nnoremap <silent> <C-P> :<C-u>Unite -buffer-name=files -toggle -start-insert neomru/file file_rec/async:!<CR>
 nnoremap <silent> <C-f> :<C-u>Unite grep:. -buffer-name=grep%".tabpagenr()." -toggle -auto-preview -no-split -no-empty<CR>
-nnoremap <silent> <F11> :<C-u>Unite -toggle spell_suggest<CR>
-inoremap <silent> <F11> <C-o>:<C-u>Unite -toggle spell_suggest<CR>
-nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
-inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle register history/yank<CR>
+nnoremap <silent> <F11> :<C-u>Unite -toggle spell_suggest -no-start-insert<CR>
+inoremap <silent> <F11> <C-o>:<C-u>Unite -toggle spell_suggest -no-start-insert<CR>
+nnoremap <silent> <F10> :<C-u>Unite -buffer-name=register -toggle -no-start-insert register history/yank<CR>
+inoremap <silent> <F10> <C-o>:<C-u>Unite -buffer-name=register -toggle -no-start-insert register history/yank<CR>
 
 nnoremap <silent> [Space]ft
 	\ :<C-u>Unite -start-insert filetype filetype/new<CR>
