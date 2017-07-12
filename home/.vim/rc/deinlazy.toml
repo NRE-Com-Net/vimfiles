@@ -12,7 +12,18 @@ on_if = 1
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_if = 1
-on_source = 'unite.vim'
+on_event = 'TextYankPost'
+on_source = ['unite.vim', 'denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = "has('lua')"
+on_event = 'InsertEnter'
+hook_source = '''
+	let g:neocomplete#enable_at_startup = 1
+	source $RC_PATH/plugins/neocomplete.rc.vim
+'''
 
 [[plugins]]
 repo = 'thinca/vim-unite-history'
@@ -178,7 +189,6 @@ on_map = '<Plug>'
 repo = 'chikatoike/concealedyank.vim'
 on_map = [['x', '<Plug>(operator-concealedyank)']]
 
-# Textobjs
 [[plugins]]
 repo = 'kana/vim-textobj-user'
 

@@ -1,1 +1,1 @@
-execute 'source' $HOME.'/.vim/rc/vimrc'
+execute 'source' $HOME.'/.vim/vimrc'
