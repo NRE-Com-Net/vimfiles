@@ -2,7 +2,10 @@
 " deoplete.nvim
 "
 
-set completeopt+=noinsert
+" Autoselect feature
+"set completeopt+=noinsert
+" Function preview
+"set completeopt+=preview
 
 " <TAB>: completion.
 imap <silent><expr> <TAB>
@@ -30,5 +33,5 @@ inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-" let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
 let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
+let g:deoplete#enable_refresh_always = 1
