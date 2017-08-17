@@ -46,3 +46,5 @@ au User fugitive
 			\   nnoremap <buffer> .. :edit %:h<CR> |
 			\ endif
 au BufReadPost fugitive://* set bufhidden=delete
+
+autocmd FileType python set tabstop=4|set shiftwidth=4|set noexpandtab
