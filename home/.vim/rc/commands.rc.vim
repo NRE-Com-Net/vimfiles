@@ -47,4 +47,4 @@ au User fugitive
 			\ endif
 au BufReadPost fugitive://* set bufhidden=delete
 
-autocmd FileType python set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
