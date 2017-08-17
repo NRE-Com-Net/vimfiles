@@ -1,0 +1,136 @@
+" NemesisRE's .vimrc (shameless taken from https://github.com/Shougo/shougo-s-github)
+"--------------------------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------------------------
+" Initialize:
+"
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+if &compatible
+	set nocompatible
+endif
+
+if has('nvim')
+	runtime! plugin/python_setup.vim
+endif
+
+let $RC_PATH = expand('~/.vim/rc')
+
+function! g:Source_rc(path, ...) abort "{{{
+	let use_global = get(a:000, 0, !has('vim_starting'))
+	let abspath = resolve(expand($RC_PATH . '/' . a:path))
+	if !use_global
+		execute 'source' fnameescape(abspath)
+		return
+	endif
+
+	" substitute all 'set' to 'setglobal'
+	let content = map(readfile(abspath),
+				\ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+	" create tempfile and source the tempfile
+	let tempfile = tempname()
+	try
+		call writefile(content, tempfile)
+		execute printf('source %s', fnameescape(tempfile))
+	finally
+		if filereadable(tempfile)
+			call delete(tempfile)
+		endif
+	endtry
+endfunction"}}}
+
+" Set augroup.
+augroup MyAutoCmd
+	autocmd!
+augroup END
+
+if has('vim_starting')
+	call g:Source_rc('init.rc.vim')
+endif
+
+call g:Source_rc('dein.rc.vim')
+
+if !has('vim_starting')
+	call dein#call_hook('source')
+	call dein#call_hook('post_source')
+	syntax enable
+	filetype plugin indent on
+endif
+
+"--------------------------------------------------------------------------------------------------
+" Encoding:
+"
+
+call g:Source_rc('encoding.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Search:
+"
+
+" Ignore the case of normal letters.
+set ignorecase
+" If the search pattern contains upper case characters, override ignorecase option.
+set smartcase
+
+" Enable incremental search.
+set incsearch
+" Don't highlight search result.
+set hlsearch
+
+" Searches wrap around the end of the file.
+set wrapscan
+
+"--------------------------------------------------------------------------------------------------
+" Edit:
+"
+
+call g:Source_rc('edit.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" View:
+"
+
+call g:Source_rc('view.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Mappings:
+"
+
+call g:Source_rc('mappings.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Platform:
+"
+
+if has('nvim')
+	call g:Source_rc('neovim.rc.vim')
+endif
+
+if IsWindows()
+	call g:Source_rc('windows.rc.vim')
+else
+	call g:Source_rc('unix.rc.vim')
+endif
+
+if !has('nvim') && has('gui_running')
+	call g:Source_rc('gui.rc.vim')
+endif
+
+"--------------------------------------------------------------------------------------------------
+" Commands:
+"
+call g:Source_rc('commands.rc.vim')
+
+"--------------------------------------------------------------------------------------------------
+" Others:
+"
+
+" If true Vim master, use English help file.
+set helplang& helplang=en
+
+" Default home directory.
+let t:cwd = getcwd()
+
+set secure
+
+" vim: foldmethod=marker

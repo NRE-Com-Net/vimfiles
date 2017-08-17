@@ -3,6 +3,8 @@
 "
 let s:is_windows = has('win32') || has('win64')
 
+let g:has_async = v:version >= 800 || has('nvim')
+
 function! IsWindows() abort
   return s:is_windows
 endfunction

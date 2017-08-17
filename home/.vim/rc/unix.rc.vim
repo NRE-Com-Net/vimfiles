@@ -18,7 +18,7 @@ endif
 " Enable 256 color terminal.
 set t_Co=256
 
-if &term =~# 'xterm' && !has('nvim')
+if &term =~# 'xterm'
 	let &t_ti .= "\e[?2004h"
 	let &t_te .= "\e[?2004l"
 	let &pastetoggle = "\e[201~"
@@ -46,14 +46,8 @@ if &term =~# 'xterm' && !has('nvim')
 endif
 
 " Using the mouse on a terminal.
-if has('mouse') && !has('nvim')
+if has('mouse')
 	set mouse=a
-	if has('mouse_sgr') || v:version > 703 ||
-				\ v:version == 703 && has('patch632')
-		set ttymouse=sgr
-	else
-		set ttymouse=xterm2
-	endif
 
 	" Paste.
 	nnoremap <RightMouse> "+p
@@ -62,7 +56,16 @@ if has('mouse') && !has('nvim')
 	cnoremap <RightMouse> <C-r>+
 endif
 
-if &term =~# 'xterm' && !has('nvim')
+if has('mouse') && !has('nvim')
+	if has('mouse_sgr') || v:version > 703 ||
+				\ v:version == 703 && has('patch632')
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	endif
+endif
+
+if &term =~# 'xterm'
 	let &t_ti .= "\e[?2004h"
 	let &t_te .= "\e[?2004l"
 	let &pastetoggle = "\e[201~"

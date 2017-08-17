@@ -131,7 +131,7 @@ function! s:strwidthpart(str, width) "{{{
 	return ret
 endfunction"}}}
 
-if v:version >= 703
+if v:version >= 703 || has('nvim')
 	" For conceal.
 	set conceallevel=2 concealcursor=iv
 

@@ -26,10 +26,12 @@ set modelines=5
 set number
 
 " Use clipboard register.
-if has('unnamedplus')
-	set clipboard& clipboard+=unnamedplus
-else
-	set clipboard& clipboard+=unnamed
+if (!has('nvim') || $DISPLAY != '') && has('clipboard')
+	if has('unnamedplus')
+		set clipboard& clipboard+=unnamedplus
+	else
+		set clipboard& clipboard+=unnamed
+	endif
 endif
 
 " Enable backspace delete indent and newline.
