@@ -247,3 +247,4 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 if = 'g:has_async'
+hook_add = 'source $RC_PATH/plugins/ale.rc.vim'
