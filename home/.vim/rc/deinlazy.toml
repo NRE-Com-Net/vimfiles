@@ -258,8 +258,3 @@ on_source = ['unite','vim-startify','vim-airline', 'vimfiler.vim']
 hook_add = '''
 	let g:webdevicons_enable_vimfiler = 0
 '''
-
-[[plugins]]
-repo = 'w0rp/ale'
-if = 'g:has_async'
-
