@@ -37,7 +37,6 @@ call dein#disable('neobundle.vim')
 call dein#disable('neopairs.vim')
 
 call dein#end()
-call dein#save_state()
 
 if !has('vim_starting') && dein#check_install()
 	" Installation check.
