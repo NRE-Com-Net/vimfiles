@@ -195,6 +195,9 @@ hook_add  =  '''
 repo = 'jreybert/file-line'
 
 [[plugins]]
+repo = 'romainl/vim-qf'
+
+[[plugins]]
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
