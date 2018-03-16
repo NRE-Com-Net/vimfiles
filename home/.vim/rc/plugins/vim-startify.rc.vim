@@ -34,7 +34,7 @@ let g:startify_list_order = [
       \ 'bookmarks',
       \ ]
 
-let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'z': '~/.zshrc'} ]
+let g:startify_bookmarks = [ {'V': '~/.vim/rc/vimrc'}, {'B': '~/.bashrc'}, {'Z': '~/.zshrc'} ]
 
 let g:startify_update_oldfiles = 1
 "let g:startify_disable_at_vimenter = 1

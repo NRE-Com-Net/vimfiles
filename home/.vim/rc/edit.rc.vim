@@ -97,9 +97,9 @@ if v:version >= 703
 	set undolevels=1000
 	set undoreload=10000
 	if has('nvim')
-		set viminfo='50,f1,<500,@100,h,%,/50,:100,n$CACHE/.nviminfo
+		set shada=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.nviminfo
 	else
-		set viminfo='50,f1,<500,@100,h,%,/50,:100,n$CACHE/.viminfo
+		set viminfo=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.viminfo
 	endif
 
 	if !isdirectory(expand($CACHE . '/backupfiles'))
