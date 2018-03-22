@@ -251,3 +251,10 @@ hook_add = '''
 repo = 'w0rp/ale'
 if = 'g:has_async'
 hook_add = 'source $RC_PATH/plugins/ale.rc.vim'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+	let g:webdevicons_enable_vimfiler = 0
+'''
+

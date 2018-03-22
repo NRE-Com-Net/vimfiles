@@ -252,9 +252,3 @@ on_ft = 'ruby'
 repo = 'saltstack/salt-vim'
 on_ft = ['salt','sls']
 
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-on_source = ['unite','vim-startify','vim-airline', 'vimfiler.vim']
-hook_add = '''
-	let g:webdevicons_enable_vimfiler = 0
-'''
