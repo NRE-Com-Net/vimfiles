@@ -16,6 +16,7 @@ function! IsMac() abort
 endfunction
 
 set tags=./.tags;,$CACHE/.vimtags
+set tagrelative
 
 " Use English interface.
 language message C
