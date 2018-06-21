@@ -24,17 +24,18 @@ nnoremap <silent> <F1> :<C-u>Startify<CR>
 inoremap <silent> <F1> <C-o>:<C-u>Startify<CR>
 
 let g:startify_list_order = [
-      \ ['   My most recently used files in the current directory:'],
-      \ 'dir',
-      \ ['   My most recently used files:'],
-      \ 'files',
-      \ ['   These are my sessions:'],
-      \ 'sessions',
-      \ ['   These are my bookmarks:'],
-      \ 'bookmarks',
-      \ ]
+	\		['   My most recently used files in the current directory:'], 'dir',
+	\		['   My most recently used files:'], 'files',
+	\		['   These are my sessions:'], 'sessions',
+	\		['   These are my bookmarks:'], 'bookmarks',
+	\		['   Useful commands:'], 'commands',
+	\	]
 
 let g:startify_bookmarks = [ {'V': '~/.vim/rc/vimrc'}, {'B': '~/.bashrc'}, {'Z': '~/.zshrc'} ]
+
+let g:startify_commands = [
+        \ {'u': ['Update Vim Plugins', 'call dein#update() | :Unite dein/log -log -no-start-insert']},
+        \ ]
 
 let g:startify_update_oldfiles = 1
 "let g:startify_disable_at_vimenter = 1
