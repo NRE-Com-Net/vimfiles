@@ -54,28 +54,8 @@ hook_add  = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'tabpagebuffer.vim']
-on_event = 'VimEnter'
-hook_source = '''
-	source $RC_PATH/plugins/unite.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/unite-build'
 on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-on_map = {n = '<Plug>'}
-hook_add  = '''
-	nnoremap <silent> <F2> :<C-u>VimFiler<CR>
-	:imap <silent> <F2> <C-o>:<C-u>VimFiler<CR>
-	autocmd FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l)
-'''
-hook_source = 'source $RC_PATH/plugins/vimfiler.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
