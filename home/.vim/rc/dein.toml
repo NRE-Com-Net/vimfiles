@@ -10,22 +10,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'tabpagebuffer.vim']
-on_event = 'VimEnter'
-hook_add = '''
-	source $RC_PATH/plugins/unite.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-hook_add = '''
-	source $RC_PATH/plugins/defx.rc.vim
-	nnoremap <silent> <F2> :<C-u>Defx -toggle -winwidth=50 -split=vertical -direction=topleft `expand('%:p:h')` -search=`expand('%:p')` -columns=git:mark:filename:type<CR>
-	:imap <silent> <F2> <C-o>:<C-u>Defx -toggle -winwidth=50 -split=vertical -direction=topleft `expand('%:p:h')` -search=`expand('%:p')` -columns=git:mark:filename:type<CR>
-'''
-
-[[plugins]]
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
