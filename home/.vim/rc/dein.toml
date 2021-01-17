@@ -207,50 +207,6 @@ repo = 'sheerun/vim-polyglot'
 repo = 'vitalk/vim-shebang'
 
 [[plugins]]
-repo = 'vimwiki/vimwiki'
-hook_add = '''
-	nnoremap <silent> <F8> :<C-u>VimwikiIndex<CR>
-	inoremap <silent> <C-F8> <C-o>:<C-u>VimwikiDiaryIndex<CR>
-	nnoremap <silent><Leader>wf :<C-u>call vimwiki#base#follow_link('nosplit')<CR>
-	nnoremap <silent><Leader>wv :<C-u>call vimwiki#base#follow_link('vsplit')<CR>
-	nnoremap <silent><Leader>wb :<C-u>call vimwiki#base#go_back_link()<CR>
-
-	let wiki_1 = {}
-	let wiki_1.path = '~/.homesick/repos/vimwiki-privat/'
-	let wiki_1.auto_toc = 1
-
-	let wiki_2 = {}
-	let wiki_2.path = '~/.homesick/repos/vimwiki-1and1/'
-	let wiki_2.auto_toc = 1
-
-	let g:vimwiki_nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'bash': 'sh'}
-	let g:vimwiki_list = [wiki_1, wiki_2]
-'''
-hook_source = '''
-	autocmd BufReadPre *.wiki silent exec "!git pull -q" | redraw!
-	autocmd BufWritePost *.wiki silent exec "!git add --all ;git commit -q -m 'Auto commit.';git push -q" | redraw!
-'''
-
-[[plugins]]
-repo = 'mattn/calendar-vim'
-hook_add = '''
-	function! ToggleCalendar()
-		execute ":Calendar"
-		if exists("g:calendar_open")
-			if g:calendar_open == 1
-				execute "q"
-				unlet g:calendar_open
-			else
-				g:calendar_open = 1
-			end
-		else
-			let g:calendar_open = 1
-		end
-	endfunction
-	:autocmd FileType vimwiki nnoremap <silent><Leader>wc :<C-u>call ToggleCalendar()<CR>
-'''
-
-[[plugins]]
 repo = 'w0rp/ale'
 if = 'g:has_async'
 hook_add = 'source $RC_PATH/plugins/ale.rc.vim'

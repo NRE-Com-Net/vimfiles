@@ -5,20 +5,20 @@
 " Smart insert tab setting.
 set smarttab
 " Don't exchange tab to spaces.
-set noexpandtab
+set expandtab
 " Substitute <Tab> with blanks.
-set tabstop=4
+set tabstop=2
 " Spaces instead <Tab>.
-set softtabstop=4
+set softtabstop=2
 " Autoindent width.
-set shiftwidth=4
+set shiftwidth=2
 " Round indent by shiftwidth.
 set shiftround
 
 set autoindent
 "wrapping
-set wrap		"wrap lines
-set linebreak	"wrap lines at convenient points
+set wrap        "wrap lines
+set linebreak   "wrap lines at convenient points
 " Enable modeline.
 set modeline
 set modelines=5
@@ -27,11 +27,11 @@ set number
 
 " Use clipboard register.
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
-	if has('unnamedplus')
-		set clipboard& clipboard+=unnamedplus
-	else
-		set clipboard& clipboard+=unnamed
-	endif
+    if has('unnamedplus')
+        set clipboard& clipboard+=unnamedplus
+    else
+        set clipboard& clipboard+=unnamed
+    endif
 endif
 
 " Enable backspace delete indent and newline.
@@ -64,8 +64,8 @@ set foldcolumn=3
 set fillchars=vert:\|
 
 if exists('*FoldCCtext')
-	" Use FoldCCtext().
-	set foldtext=FoldCCtext()
+    " Use FoldCCtext().
+    set foldtext=FoldCCtext()
 endif
 
 " Use vimgrep.
@@ -84,34 +84,34 @@ set updatetime=1000
 
 " Set swap directory.
 if !isdirectory(expand($CACHE . '/swapfiles'))
-	call mkdir(expand($CACHE . '/swapfiles'), 'p')
+    call mkdir(expand($CACHE . '/swapfiles'), 'p')
 endif
 set directory=$CACHE/swapfiles
 
 if v:version >= 703
-	set undofile
-	if !isdirectory(expand($CACHE . '/undofiles'))
-		call mkdir(expand($CACHE . '/undofiles'), 'p')
-	endif
-	set undodir=$CACHE/undofiles
-	set undolevels=1000
-	set undoreload=10000
-	if has('nvim')
-		set shada=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.nviminfo
-	else
-		set viminfo=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.viminfo
-	endif
+    set undofile
+    if !isdirectory(expand($CACHE . '/undofiles'))
+        call mkdir(expand($CACHE . '/undofiles'), 'p')
+    endif
+    set undodir=$CACHE/undofiles
+    set undolevels=1000
+    set undoreload=10000
+    if has('nvim')
+        set shada=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.nviminfo
+    else
+        set viminfo=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/.viminfo
+    endif
 
-	if !isdirectory(expand($CACHE . '/backupfiles'))
-		call mkdir(expand($CACHE . '/backupfiles'), 'p')
-	endif
-	set backupdir=$CACHE/backupfiles
-	set colorcolumn=100
+    if !isdirectory(expand($CACHE . '/backupfiles'))
+        call mkdir(expand($CACHE . '/backupfiles'), 'p')
+    endif
+    set backupdir=$CACHE/backupfiles
+    set colorcolumn=100
 endif
 
 if v:version < 703 || (v:version == 7.3 && !has('patch336'))
-	" Vim's bug.
-	set notagbsearch
+    " Vim's bug.
+    set notagbsearch
 endif
 
 " Enable virtualedit in visual block mode.
@@ -125,8 +125,8 @@ autocmd MyAutoCmd WinEnter * checktime
 
 " Disable paste.
 autocmd MyAutoCmd InsertLeave *
-			\ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
-		\ if &l:diff | diffupdate | endif
+            \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
+        \ if &l:diff | diffupdate | endif
 
 " Update diff.
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
@@ -136,13 +136,13 @@ autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 " http://vim-users.jp/2011/02/hack202/
 
 autocmd MyAutoCmd BufWritePre *
-			\ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
+            \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
 function! s:mkdir_as_necessary(dir, force)
-	if !isdirectory(a:dir) && &l:buftype == '' &&
-				\ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
-				\              a:dir)) =~? '^y\%[es]$')
-		call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-	endif
+    if !isdirectory(a:dir) && &l:buftype == '' &&
+                \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
+                \              a:dir)) =~? '^y\%[es]$')
+        call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
 endfunction
 
 " Use autofmt.
