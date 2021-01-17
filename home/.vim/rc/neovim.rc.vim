@@ -16,3 +16,4 @@ tnoremap   <ESC><ESC>   <C-\><C-n>
 " Use cursor shape feature
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
