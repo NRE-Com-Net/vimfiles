@@ -34,7 +34,9 @@ let g:startify_list_order = [
 let g:startify_bookmarks = [ {'V': '~/.vim/rc/vimrc'}, {'B': '~/.bashrc'}, {'Z': '~/.zshrc'} ]
 
 let g:startify_commands = [
+        \ {'c': ['Check Health', 'checkhealth']},
         \ {'u': ['Update Vim Plugins', 'call dein#update() | :Unite dein/log -log -no-start-insert']},
+        \ {'U': ['Update Remote Plugins', 'UpdateRemotePlugins']},
         \ ]
 
 let g:startify_update_oldfiles = 1

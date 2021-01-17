@@ -13,6 +13,9 @@ build = 'make'
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
 repo = 'thinca/vim-themis'
 
 [[plugins]]
@@ -141,9 +144,6 @@ hook_add  =  '''
 
 [[plugins]]
 repo = 'honza/vim-snippets'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'pbrisbin/vim-mkdir'
