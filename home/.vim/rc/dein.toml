@@ -10,6 +10,10 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+on_if = '!has("nvim")'
+
+[[plugins]]
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
@@ -65,11 +69,8 @@ repo = 'tpope/vim-repeat'
 mappings = '.'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'mbbill/undotree'
-hook_add  = '''
+hook_add = '''
 	source $RC_PATH/plugins/undotree.rc.vim
 	nnoremap <silent> <F5> :UndotreeToggle<CR>
 	:imap <F5> <C-o>:UndotreeToggle<CR>
@@ -77,6 +78,9 @@ hook_add  = '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_fileTypeExclude = ['startify', 'defx', 'denite']
+'''
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'

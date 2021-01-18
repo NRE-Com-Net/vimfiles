@@ -9,11 +9,7 @@ endfunction
 
 " Show <TAB> and <CR>
 set list
-if IsWindows()
-	set listchars=tab:>.,trail:-,extends:>,precedes:<
-else
-	set listchars=tab:>.,trail:-,extends:»,precedes:«,nbsp:.
-endif
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 " Do not wrap long line.
 set nowrap
 " Wrap conditions.
