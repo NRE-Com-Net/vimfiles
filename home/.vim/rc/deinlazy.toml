@@ -144,7 +144,7 @@ hook_add = '''
     inoremap <silent> <F4> <C-o>:<C-u>Denite buffer -no-start-filter<CR>
     nnoremap <silent> <F9> :<C-u>Denite tasklist -start-filter -vertical -winwidth=40<CR>
     inoremap <silent> <F9> <C-o>:<C-u>Denite tasklist -start-filter -vertical -winwidth=40<CR>
-    nnoremap <silent> <C-P> :<C-u>Denite -buffer-name=files -start-filter neomru/file file_rec/async:!<CR>
+    nnoremap <silent> <C-P> :<C-u>Denite -buffer-name=files -start-filter file_mru<CR>
     nnoremap <silent> <C-f> :<C-u>Denite grep:. -buffer-name=grep%".tabpagenr()." -auto-preview -no-split -no-empty<CR>
     nnoremap <silent> <F10> :<C-u>Denite -buffer-name=register -no-start-filter register neoyank<CR>
     inoremap <silent> <F10> <C-o>:<C-u>Denite -buffer-name=register -no-start-filter register neoyank<CR>
