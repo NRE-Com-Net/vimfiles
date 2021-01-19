@@ -19,8 +19,8 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
-    nnoremap <silent> <F2> :<C-u>Defx -toggle -show-ignored-files -listed -winwidth=50 -split=vertical -direction=topleft `expand('%:p:h')` -search=`expand('%:p')` -columns=git:icons:mark:filename:type<CR>
-    :imap <silent> <F2> <C-o>:<C-u>Defx -toggle -show-ignored-files -winwidth=50 -split=vertical -direction=topleft `expand('%:p:h')` -search=`expand('%:p')` -columns=git:icons:mark:filename:type<CR>
+    nnoremap <silent> <F2> :<C-u>Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
+    :imap <silent> <F2> <C-o>:<C-u>Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
 '''
 hook_source = '''
     source $RC_PATH/plugins/defx.rc.vim
@@ -150,6 +150,15 @@ hook_add = '''
     inoremap <silent> <F10> <C-o>:<C-u>Denite -buffer-name=register -no-start-filter register neoyank<CR>
     nnoremap <silent> <F11> :<C-u>Denite spell_suggest -no-start-filter<CR>
     inoremap <silent> <F11> <C-o>:<C-u>Denite spell_suggest -no-start-filter<CR>
+    nnoremap <silent><expr> / wordcount().chars > 30000 ?
+        \ ":\<C-u>Denite -buffer-name=search -start-filter
+        \  -search line/external\<CR>" :
+        \ ":\<C-u>Denite -buffer-name=search -start-filter -search line\<CR>"
+    nnoremap <silent><expr> * wordcount().chars > 30000 ?
+        \ ":\<C-u>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
+        \ ":\<C-u>DeniteCursorWord -buffer-name=search -search line\<CR>"
+    nnoremap <silent> n
+        \ :<C-u>Denite -buffer-name=search -resume<CR>
 '''
 [plugins.ftplugin]
 denite = '''

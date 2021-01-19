@@ -14,6 +14,9 @@ repo = 'roxma/vim-hug-neovim-rpc'
 on_if = '!has("nvim")'
 
 [[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
@@ -25,9 +28,9 @@ repo = 'thinca/vim-themis'
 [[plugins]]
 repo = 'scwood/vim-hybrid'
 hook_add = '''
-	syntax on
-	set background=dark
-	colorscheme hybrid
+  syntax on
+  set background=dark
+  colorscheme hybrid
 '''
 
 [[plugins]]
@@ -43,11 +46,11 @@ repo = 'tpope/vim-endwise'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add  = '''
-	autocmd BufReadPost fugitive://* set bufhidden=delete
-	autocmd BufReadPost fugitive://*
-				\ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-				\   nnoremap <buffer> .. :edit %:h<CR> |
-				\ endif
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufReadPost fugitive://*
+            \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+            \   nnoremap <buffer> .. :edit %:h<CR> |
+            \ endif
 '''
 
 [[plugins]]
@@ -56,9 +59,9 @@ repo = 'tpope/vim-git'
 [[plugins]]
 repo = 'tpope/vim-surround'
 hook_add = '''
-	nmap <silent>sa <Plug>(operator-surround-append)
-	nmap <silent>sd <Plug>(operator-surround-delete)
-	nmap <silent>sr <Plug>(operator-surround-replace)
+  nmap <silent>sa <Plug>(operator-surround-append)
+  nmap <silent>sd <Plug>(operator-surround-delete)
+  nmap <silent>sr <Plug>(operator-surround-replace)
 '''
 
 [[plugins]]
@@ -71,15 +74,15 @@ mappings = '.'
 [[plugins]]
 repo = 'mbbill/undotree'
 hook_add = '''
-	source $RC_PATH/plugins/undotree.rc.vim
-	nnoremap <silent> <F5> :UndotreeToggle<CR>
-	:imap <F5> <C-o>:UndotreeToggle<CR>
+  source $RC_PATH/plugins/undotree.rc.vim
+  nnoremap <silent> <F5> :UndotreeToggle<CR>
+  :imap <F5> <C-o>:UndotreeToggle<CR>
 '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
-    let g:indentLine_fileTypeExclude = ['startify', 'defx', 'denite']
+  let g:indentLine_fileTypeExclude = ['startify', 'defx', 'denite']
 '''
 
 [[plugins]]
@@ -91,12 +94,12 @@ repo = 'godlygeek/tabular'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 hook_add = '''
-	let g:tagbar_singleclick = 1
-	let g:tagbar_width = 50
-	let g:tagbar_sort = 0
-	let g:tagbar_compact = 1
-	nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
-	:imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
+  let g:tagbar_singleclick = 1
+  let g:tagbar_width = 50
+  let g:tagbar_sort = 0
+  let g:tagbar_compact = 1
+  nnoremap <silent> <F3> :<C-u>TagbarToggle<CR>
+  :imap <silent> <F3> <C-o>:<C-u>TagbarToggle<CR>
 '''
 
 [[plugins]]
@@ -113,7 +116,7 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 hook_add  = '''
-	let g:better_whitespace_filetypes_blacklist = ['unite', 'qf', 'defx', 'vimfiler', 'vimshell', 'help', 'vimfiler:explorer', 'startify', 'calendar']
+  let g:better_whitespace_filetypes_blacklist = ['unite', 'qf', 'defx', 'vimfiler', 'vimshell', 'help', 'vimfiler:explorer', 'startify', 'calendar']
 '''
 
 [[plugins]]
@@ -129,21 +132,21 @@ repo = 'xolox/vim-misc'
 repo = 'xolox/vim-easytags'
 depends = 'xolox/vim-misc'
 hook_add  =  '''
-	let g:easytags_dynamic_files = 1
-	let g:easytags_resolve_links = 1
-	let g:easytags_include_members = 1
-	let g:easytags_autorecurse = 0
-	let g:easytags_async = 1
-	let g:easytags_auto_highlight = 0
-	let g:easytags_updatetime_warn = 0
+  let g:easytags_dynamic_files = 1
+  let g:easytags_resolve_links = 1
+  let g:easytags_include_members = 1
+  let g:easytags_autorecurse = 0
+  let g:easytags_async = 1
+  let g:easytags_auto_highlight = 0
+  let g:easytags_updatetime_warn = 0
 
-	function! UpdateProjectTags()
-		let g:easytags_autorecurse = 1
-		:UpdateTags
-		let g:easytags_autorecurse = 0
-	endfunction
+  function! UpdateProjectTags()
+    let g:easytags_autorecurse = 1
+    :UpdateTags
+    let g:easytags_autorecurse = 0
+  endfunction
 
-	nnoremap <leader>ut :<C-u>call UpdateProjectTags()<CR>
+  nnoremap <leader>ut :<C-u>call UpdateProjectTags()<CR>
 '''
 
 [[plugins]]
@@ -155,8 +158,8 @@ repo = 'pbrisbin/vim-mkdir'
 [[plugins]]
 repo = 'jmcantrell/vim-diffchanges'
 hook_add  =  '''
-	nnoremap <silent> <F12> :DiffChangesDiffToggle<CR>
-	inoremap <silent> <F12> <C-o>:<C-u>DiffChangesDiffToggle<CR>
+  nnoremap <silent> <F12> :DiffChangesDiffToggle<CR>
+  inoremap <silent> <F12> <C-o>:<C-u>DiffChangesDiffToggle<CR>
 '''
 
 [[plugins]]
@@ -174,28 +177,28 @@ repo = 'vim-scripts/bufkill.vim'
 [[plugins]]
 repo = 'mhinz/vim-signify'
 hook_add  = '''
-	let g:signify_vcs_list = [ 'svn', 'hg', 'bzr' ]
-	let signify_update_on_focusgained = 1
-	let g:signify_sign_add               = '+'
-	let g:signify_sign_delete            = '_'
-	let g:signify_sign_delete_first_line = '‾'
-	let g:signify_sign_change            = '~'
-	let g:signify_sign_changedelete      = '~_'
+  let g:signify_vcs_list = [ 'svn', 'hg', 'bzr' ]
+  let signify_update_on_focusgained = 1
+  let g:signify_sign_add               = '+'
+  let g:signify_sign_delete            = '_'
+  let g:signify_sign_delete_first_line = '‾'
+  let g:signify_sign_change            = '~'
+  let g:signify_sign_changedelete      = '~_'
 '''
 
 [[plugins]]
 repo = 'int3/vim-extradite'
 depends = 'tpope/vim-fugitive'
 hook_source =  '''
-	nnoremap <silent> <F6> :Extradite!<CR>
-	:inoremap <F6> <C-o>:<C-u>Extradite!<CR>
+  nnoremap <silent> <F6> :Extradite!<CR>
+  :inoremap <F6> <C-o>:<C-u>Extradite!<CR>
 '''
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
 hook_add  =  '''
-	let g:rooter_silent_chdir = 1
-	let g:rooter_change_directory_for_non_project_files = 'home'
+  let g:rooter_silent_chdir = 1
+  let g:rooter_change_directory_for_non_project_files = 'home'
 '''
 
 [[plugins]]
@@ -213,11 +216,16 @@ repo = 'vitalk/vim-shebang'
 [[plugins]]
 repo = 'w0rp/ale'
 if = 'g:has_async'
-hook_add = 'source $RC_PATH/plugins/ale.rc.vim'
+hook_add = '''
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+  let g:ale_open_list = 1
+  let g:airline#extensions#ale#enabled = 1
+'''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 hook_add = '''
-	let g:webdevicons_enable_vimfiler = 0
+  let g:webdevicons_enable_vimfiler = 0
 '''
 

@@ -1,7 +1,25 @@
+call defx#custom#column('mark', {
+        \ 'readonly_icon': '✗',
+        \ 'selected_icon': '✓',
+        \ })
+
+call defx#custom#column('indent',{'indent': "∟"})
+
+call defx#custom#option('_', {
+        \ 'columns': 'mark:indent:icons:git:filename:size',
+        \ 'show_ignored_files': 1,
+        \ 'split': 'vertical',
+        \ 'winwidth': 60,
+        \ 'direction': 'topleft',
+        \ 'toggle': 1,
+        \ 'listed': 1,
+        \ })
+
 function! s:defx_my_settings() abort
   " Define mappings
   nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
-  nnoremap <silent><buffer><expr> <2-LeftMouse> defx#do_action('drop')
+  nnoremap <silent><buffer><expr> <2-LeftMouse> defx#is_directory() ?
+              \ defx#do_action('open_tree', 'toggle') : defx#do_action('drop')
   nnoremap <silent><buffer><expr> <BS> defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> <RightMouse> defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> c defx#do_action('copy')
