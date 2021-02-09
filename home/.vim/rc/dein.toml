@@ -229,3 +229,6 @@ hook_add = '''
   let g:webdevicons_enable_vimfiler = 0
 '''
 
+[[plugins]]
+repo = 'WolfgangMehner/bash-support'
+on_ft = ['sh', 'bash']
