@@ -169,9 +169,6 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'zhaocai/DirDiff.vim'
 
 [[plugins]]
-repo = 'ap/vim-css-color'
-
-[[plugins]]
 repo = 'vim-scripts/bufkill.vim'
 
 [[plugins]]
