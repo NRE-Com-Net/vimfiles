@@ -28,7 +28,7 @@ function! g:Source_rc(path, ...) abort "{{{
     execute printf('source %s', fnameescape(tempfile))
   finally
     if filereadable(tempfile)
-       call delete(tempfile)
+        call delete(tempfile)
     endif
   endtry
 endfunction"}}}

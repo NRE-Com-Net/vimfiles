@@ -15,7 +15,7 @@ function! IsMac() abort
       \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
 
-set tags=./.tags;,$CACHE/.vimtags
+set tags=./.tags;,$CACHE/vimtags
 set tagrelative
 
 " Use English interface.

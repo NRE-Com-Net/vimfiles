@@ -1,1 +1,1 @@
-execute 'source' $HOME.'/.vim/vimrc'
+execute 'source' $XDG_CONFIG_HOME'/vim/vimrc'
