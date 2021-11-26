@@ -46,11 +46,11 @@ set number
 
 " Use clipboard register.
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
-    if has('unnamedplus')
-        set clipboard& clipboard+=unnamedplus
-    else
-        set clipboard& clipboard+=unnamed
-    endif
+  if has('unnamedplus')
+    set clipboard& clipboard+=unnamedplus
+  else
+    set clipboard& clipboard+=unnamed
+  endif
 endif
 
 " Enable backspace delete indent and newline.
@@ -87,8 +87,8 @@ endif
 set fillchars=vert:\|
 
 if exists('*FoldCCtext')
-    " Use FoldCCtext().
-    set foldtext=FoldCCtext()
+  " Use FoldCCtext().
+  set foldtext=FoldCCtext()
 endif
 
 " Use vimgrep.
@@ -107,7 +107,7 @@ set updatetime=100
 
 " Set swap directory.
 if !isdirectory(expand($CACHE . '/swapfiles'))
-    call mkdir(expand($CACHE . '/swapfiles'), 'p')
+  call mkdir(expand($CACHE . '/swapfiles'), 'p')
 endif
 set directory=$CACHE/swapfiles
 
@@ -119,13 +119,13 @@ set undodir=$CACHE/undofiles
 set undolevels=1000
 set undoreload=10000
 if has('nvim')
-    set shada=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/nviminfo
+  set shada=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/nviminfo
 else
-    set viminfo=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/viminfo
+  set viminfo=!,'500,<500,@100,/50,:100,f1,h,n$CACHE/viminfo
 endif
 
 if !isdirectory(expand($CACHE . '/backupfiles'))
-    call mkdir(expand($CACHE . '/backupfiles'), 'p')
+  call mkdir(expand($CACHE . '/backupfiles'), 'p')
 endif
 set backupdir=$CACHE/backupfiles
 set colorcolumn=100
@@ -154,11 +154,11 @@ autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 autocmd MyAutoCmd BufWritePre *
             \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
 function! s:mkdir_as_necessary(dir, force)
-    if !isdirectory(a:dir) && &l:buftype == '' &&
-                \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
-                \              a:dir)) =~? '^y\%[es]$')
-        call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
+  if !isdirectory(a:dir) && &l:buftype == '' &&
+              \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
+              \              a:dir)) =~? '^y\%[es]$')
+    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+  endif
 endfunction
 
 " Use autofmt.

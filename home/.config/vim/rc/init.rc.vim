@@ -37,7 +37,7 @@ xnoremap ,  <Nop>
 
 if IsWindows()
   " Exchange path separator.
-   set shellslash
+  set shellslash
 endif
 
 let $CACHE = expand('~/.cache/vim')
@@ -70,7 +70,7 @@ endif
 
 " Disable menu.vim
 if has('gui_running')
-   set guioptions=Mc
+  set guioptions=Mc
 endif
 
 let g:loaded_gzip              = 1

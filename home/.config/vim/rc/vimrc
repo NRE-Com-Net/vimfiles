@@ -8,7 +8,7 @@ if &compatible
   set nocompatible
 endif
 
-let $RC_PATH = expand('~/.vim/rc')
+let $RC_PATH = expand("$XDG_CONFIG_HOME/vim/rc")
 
 function! g:Source_rc(path, ...) abort "{{{
   let use_global = get(a:000, 0, !has('vim_starting'))
