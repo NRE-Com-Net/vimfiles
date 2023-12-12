@@ -1,4 +1,7 @@
 " Note: Skip initialization for vim-tiny or vim-small.
-if 1
+if has('nvim')
+    source ~/.config/nvim/vimrc
+    finish
+else
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/rc/vimrc'
 endif
